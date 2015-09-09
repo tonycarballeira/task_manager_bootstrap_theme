@@ -10,9 +10,9 @@ class ContactMailer < ApplicationMailer
     to_email = ""
     
     if contact_form.subject == 1
-    	to_email = "tonycarballeira@gmail.com"
+    	to_email = "chinaski87@outlook.com"
     else
-    	to_email = "tonycarballeira@gmx.com"
+    	to_email = "tonycarballeira@gmail.com"
     end
 
     mail to: to_email, subject: "Contact"
