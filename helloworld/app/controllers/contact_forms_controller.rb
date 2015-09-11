@@ -15,6 +15,7 @@ class ContactFormsController < ApplicationController
   # GET /contact_forms/new
   def new
     @contact_form = ContactForm.new
+    @subjects = Subject.all
   end
 
   # GET /contact_forms/1/edit
@@ -70,6 +71,6 @@ class ContactFormsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_form_params
-      params.require(:contact_form).permit(:full_name, :email, :order_num, :comments, :sub)
+      params.require(:contact_form).permit(:full_name, :email, :order_num, :comments, :subject_id)
     end
 end

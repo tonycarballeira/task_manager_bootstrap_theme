@@ -7,15 +7,8 @@ class ContactMailer < ApplicationMailer
   #
   def contact_email(contact_form)
     @contact_form = contact_form
-    to_email = ""
-    
-    if contact_form.subject == 1
-    	to_email = "chinaski87@outlook.com"
-    else
-    	to_email = "tonycarballeira@gmail.com"
-    end
 
-    mail to: to_email, subject: "Contact"
+    mail to: contact_form.subject.value, subject: "Contact"
   end
 
 end

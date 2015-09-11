@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150908220446) do
+ActiveRecord::Schema.define(version: 20150910192703) do
 
   create_table "contact_forms", force: :cascade do |t|
     t.string   "full_name"
@@ -20,7 +20,18 @@ ActiveRecord::Schema.define(version: 20150908220446) do
     t.text     "comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "subject"
+    t.integer  "subject_id"
+  end
+
+  add_index "contact_forms", ["subject_id"], name: "index_contact_forms_on_subject_id"
+
+  create_table "subjects", force: :cascade do |t|
+    t.string   "name"
+    t.string   "value"
+    t.integer  "ost_id"
+    t.integer  "priority"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

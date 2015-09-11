@@ -29,7 +29,8 @@
   </div>
   <div class="field">
     <%= f.label :subject %><br>
-    <%= f.select :sub , [["Customer Service", "customer"], ["Billing", "billing"]] %>
+    <%= f.collection_select(:subject_id, Subject.order('priority ASC'), :id, :name) %>
+
   </div>
   <div class="actions">
     <%= f.submit %>
