@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :full_name %><br>
-    <%= f.text_field :full_name %>
+    <%= f.text_field :full_name, placeholder: 'ex: joe@joe.com' %>
   </div>
   <div class="field">
     <%= f.label :email %><br>
@@ -30,6 +30,125 @@
   <div class="field">
     <%= f.label :subject %><br>
     <%= f.collection_select(:subject_id, Subject.order('priority ASC'), :id, :name) %>
+
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<h2>Placeholder Contact Form</h2>
+
+<%= form_for(@contact_form) do |f| %>
+  <% if @contact_form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact_form.errors.count, "error") %> prohibited this contact_form from being saved:</h2>
+
+      <ul>
+      <% @contact_form.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :full_name, placeholder: 'Full Name' %>
+  </div>
+  <div class="field">
+    <%= f.text_field :email, placeholder: 'Email' %>
+  </div>
+  <div class="field">
+    <%= f.text_field :order_num, placeholder: 'Order Number' %>
+  </div>
+  <div class="field">
+    <%= f.text_area :comments, placeholder: 'Enter Comments Here' %>
+  </div>
+  <div class="field">
+    <%= f.label :subject %><br>
+    <%= f.collection_select(:subject_id, Subject.order('priority ASC'), :id, :name) %>
+
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<h2>Stylized labels and placholder hints</h2>
+
+<%= form_for(@contact_form) do |f| %>
+  <% if @contact_form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact_form.errors.count, "error") %> prohibited this contact_form from being saved:</h2>
+
+      <ul>
+      <% @contact_form.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :full_name, "Your Full name", :class => "label" %><br>
+    <%= f.text_field :full_name, placeholder: 'ex: John Doe' %>
+  </div>
+  <div class="field">
+    <%= f.label :email, :class => "label" %><br>
+    <%= f.text_field :email, placeholder: 'ex: email@example.com' %>
+  </div>
+  <div class="field">
+    <%= f.label :order_num, :class => "label" %><br>
+    <%= f.text_field :order_num, placeholder: 'ex: 45' %>
+  </div>
+  <div class="field">
+    <%= f.label :comments, :class => "label" %><br>
+    <%= f.text_area :comments, placeholder: 'Your comments here...' %>
+  </div>
+  <div class="field">
+    <%= f.label :subject, :class => "label" %><br>
+    <%= f.collection_select(:subject_id, Subject.order('priority ASC'), :id, :name) %>
+
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<h2>Aria Label Attributes</h2>
+
+<%= form_for(@contact_form) do |f| %>
+  <% if @contact_form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact_form.errors.count, "error") %> prohibited this contact_form from being saved:</h2>
+
+      <ul>
+      <% @contact_form.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :full_name, "Your Full name", :class => "label" %><br>
+    <%= f.text_field :full_name, placeholder: 'ex: John Doe', 'aria-label' => 'value', 'aria-invalid' => 'false' %>
+  </div>
+  <div class="field">
+    <%= f.label :email, :class => "label" %><br>
+    <%= f.text_field :email, placeholder: 'ex: email@example.com', 'aria-label' => 'value', 'aria-invalid' => 'false' %>
+  </div>
+  <div class="field">
+    <%= f.label :order_num, :class => "label" %><br>
+    <%= f.text_field :order_num, placeholder: 'ex: 45', 'aria-label' => 'value', 'aria-invalid' => 'false' %>
+  </div>
+  <div class="field">
+    <%= f.label :comments, :class => "label" %><br>
+    <%= f.text_area :comments, placeholder: 'Your comments here...', 'aria-label' => 'value', 'aria-invalid' => 'false' %>
+  </div>
+  <div class="field">
+    <%= f.label :subject, :class => "label" %><br>
+    <%= f.collection_select :subject_id, Subject.order('priority ASC'), :id, :name, {}, {'aria-label' => 'value', 'aria-invalid' => 'false'} %>
 
   </div>
   <div class="actions">
