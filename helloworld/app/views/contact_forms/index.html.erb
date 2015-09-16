@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
-
+<p><%= Time.now.strftime('%H:%M:%S.%L')  %></p>
 <h1>Listing Contact Forms</h1>
+
+<% form_query %>
+
+<p>
+  <%= @forms.each do |x| puts x end %>
+</p>
 
 <table>
   <thead>
@@ -15,13 +21,21 @@
   </thead>
 
   <tbody>
-    <% @contact_forms.each do |contact_form| %>
+    <% @sql.each do |contact_form| %>
       <tr>
-        <td><%= contact_form.full_name %></td>
-        <td><%= contact_form.email %></td>
-        <td><%= contact_form.order_num %></td>
-        <td><%= contact_form.comments %></td>
-        <td><%= contact_form.subject.name %></td>
+        <td><%= contact_form["full_name"] %></td>
+        <td><%= contact_form["email"] %></td>
+        <td><%= contact_form["order_num"] %></td>
+        <td><%= contact_form["comments"] %></td>
+
+        <% subject = ActiveRecord::Base.connection.exec_query("
+            SELECT name 
+            FROM subjects 
+            WHERE [subjects].[id] = #{contact_form['subject_id']}
+            ").first
+        %>
+
+        <td><%= subject["name"] %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,3 +44,9 @@
 <br>
 
 <%= link_to 'New Contact form', new_contact_form_path %>
+
+<% sql = "SELECT [contact_forms].* FROM [contact_forms]" %>
+
+<p><%=  ActiveRecord::Base.connection.exec_query(sql).each do |x| puts x end %></p>
+
+<p><%= Time.now.strftime('%H:%M:%S.%L')  %></p>

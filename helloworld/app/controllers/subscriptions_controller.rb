@@ -12,6 +12,10 @@ class SubscriptionsController < ApplicationController
     end 
 
     @lists = lists.uniq
+
+    @demos = TstDmoDemo.all
+
+    @examples = TstExpExample.all
   end
 
   # GET /subscriptions/1

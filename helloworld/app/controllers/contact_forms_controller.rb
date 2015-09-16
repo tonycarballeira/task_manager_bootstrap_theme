@@ -5,6 +5,14 @@ class ContactFormsController < ApplicationController
   # GET /contact_forms.json
   def index
     @contact_forms = ContactForm.all
+    
+    @sql_contacts = ContactForm.find_by_sql("
+      SELECT * 
+      FROM  contact_forms
+    ")
+
+    sql = "SELECT * FROM contact_forms"
+    @sql = ActiveRecord::Base.connection.exec_query(sql)
   end
 
   # GET /contact_forms/1
@@ -61,6 +69,9 @@ class ContactFormsController < ApplicationController
       format.html { redirect_to contact_forms_url, notice: 'Contact form was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def module_user
   end
 
   private
