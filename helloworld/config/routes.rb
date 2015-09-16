@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
    root 'contact_forms#new'
 
-   get  '/module_user' => 'contact_forms#module_user'
+   get  '/module_user' => 'application#module_user'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
