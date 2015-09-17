@@ -16,5 +16,13 @@ class ApplicationController < ActionController::Base
   		},
 
   	}
+
+    sql = "SELECT * FROM contact_forms"
+    
+    @sql = Rails.cache.fetch("your_cache_key", :expires_in => 5.minutes) do
+      ActiveRecord::Base.connection.exec_query(sql)
+    end
+
+
   end
 end

@@ -1,6 +1,10 @@
-<%= render :partial => @app[:modules][:header] + 'header' %>
+<%= render partial: @app[:modules][:header] + 'header' %>
 
 
-<%= render :partial => @app[:modules][:body] + 'body' %>
+<% body_type = "tony" %>
 
-<%= render :partial => @app[:modules][:footer] + 'footer' %>
+<%= render partial: @app[:modules][:body] + 'body', locals: {body_type: body_type, sql: @sql} %>
+
+<%= render partial: @app[:modules][:footer] + 'footer' %>
+
+
