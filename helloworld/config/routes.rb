@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
    get  '/module_user' => 'application#module_user'
 
+   post "/subscriptions/new" => "subscriptions#create"
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

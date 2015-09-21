@@ -11,30 +11,53 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :full_name %><br>
-    <%= f.text_field :full_name, placeholder: 'ex: joe@joe.com' %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :order_num %><br>
-    <%= f.text_field :order_num %>
-  </div>
-  <div class="field">
-    <%= f.label :comments %><br>
-    <%= f.text_area :comments %>
-  </div>
-  <div class="field">
-    <%= f.label :subject %><br>
-    <%= f.collection_select(:subject_id, Subject.order('priority ASC'), :id, :name) %>
-
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <form class="new_contact_form" id="new_contact_form" action="/contact_forms" accept-charset="UTF-8" method="post">
+    
+    <div class="field">
+      <label for="contact_form_full_name">
+        Full Name
+      </label><br>
+      <input placeholder="ex: joe@joe.com" type="text" name="contact_form[full_name]" id="contact_form_full_name">
+    </div>
+    
+    <div class="field">
+      <label for="contact_form_email">
+        Email
+      </label><br>
+      <input type="text" name="contact_form[email]" id="contact_form_email">
+    </div>
+    
+    <div class="field">
+      <label for="contact_form_order_num">
+        Order Num
+      </label><br>
+      <input type="text" name="contact_form[order_num]" id="contact_form_order_num">
+    </div>
+    
+    <div class="field">
+      <label for="contact_form_comments">
+        Comments
+      </label><br>
+      <textarea type="text" name="contact_form[comments]" id="contact_form_comments"></textarea>
+    </div>
+    
+    <div class="field">
+      <label for="contact_form_subject">
+        Subject
+      </label><br>
+      <select name="contact_form[subject_id]" id="contact_form_comments">
+        <% Subject.order('priority ASC').each do |x| %>
+          <option value=<%=x.id%>>
+            <%= x.name%>
+          </option>
+        <% end %>
+      </select>
+    </div>
+    
+    <div class="actions">
+      <input type="submit" name="commit" value="Create Contact Form">
+    </div>
+  </form>
 <% end %>
 
 <h2>Placeholder Contact Form</h2>
@@ -52,26 +75,54 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.text_field :full_name, placeholder: 'Full Name' %>
-  </div>
-  <div class="field">
-    <%= f.text_field :email, placeholder: 'Email' %>
-  </div>
-  <div class="field">
-    <%= f.text_field :order_num, placeholder: 'Order Number' %>
-  </div>
-  <div class="field">
-    <%= f.text_area :comments, placeholder: 'Enter Comments Here' %>
-  </div>
-  <div class="field">
-    <%= f.label :subject %><br>
-    <%= f.collection_select(:subject_id, Subject.order('priority ASC'), :id, :name) %>
+  <form class="new_contact_form" id="new_contact_form" action="/contact_forms" accept-charset="UTF-8" method="post">
+    
+    <div class="field">
+      <label for="contact_form_full_name">
+        Full Name
+      </label><br>
+      <input placeholder="Full Name" type="text" name="contact_form[full_name]" id="contact_form_full_name">
+    </div>
+    
+    <div class="field">
+      <label for="contact_form_email">
+        Email
+      </label><br>
+      <input placeholder="Email" type="text" name="contact_form[email]" id="contact_form_email">
+    </div>
+    
+    <div class="field">
+      <label for="contact_form_order_num">
+        Order Num
+      </label><br>
+      <input placeholder="Order Number" type="text" name="contact_form[order_num]" id="contact_form_order_num">
+    </div>
+    
+    <div class="field">
+      <label for="contact_form_comments">
+        Comments
+      </label><br>
+      <textarea placeholder="enter comments here" type="text" name="contact_form[comments]" id="contact_form_comments"></textarea>
+    </div>
+    
+    <div class="field">
+      <label for="contact_form_subject">
+        Subject
+      </label><br>
+      <select name="contact_form[subject_id]" id="contact_form_comments">
+        <% Subject.order('priority ASC').each do |x| %>
+          <option value=<%=x.id%>>
+            <%= x.name%>
+          </option>
+        <% end %>
+      </select>
+    </div>
+    
+    <div class="actions">
+      <input type="submit" name="commit" value="Create Contact Form">
+    </div>
 
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  </form>
 <% end %>
 
 <h2>Stylized labels and placholder hints</h2>
@@ -89,33 +140,57 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :full_name, "Your Full name", :class => "label" %><br>
-    <%= f.text_field :full_name, placeholder: 'ex: John Doe' %>
-  </div>
-  <div class="field">
-    <%= f.label :email, :class => "label" %><br>
-    <%= f.text_field :email, placeholder: 'ex: email@example.com' %>
-  </div>
-  <div class="field">
-    <%= f.label :order_num, :class => "label" %><br>
-    <%= f.text_field :order_num, placeholder: 'ex: 45' %>
-  </div>
-  <div class="field">
-    <%= f.label :comments, :class => "label" %><br>
-    <%= f.text_area :comments, placeholder: 'Your comments here...' %>
-  </div>
-  <div class="field">
-    <%= f.label :subject, :class => "label" %><br>
-    <%= f.collection_select(:subject_id, Subject.order('priority ASC'), :id, :name) %>
+  <form class="new_contact_form" id="new_contact_form" action="/contact_forms" accept-charset="UTF-8" method="post">
+    
+    <div class="field">
+      <label for="contact_form_full_name" class="label">
+        Full Name
+      </label><br>
+      <input placeholder="Full Name" type="text" name="contact_form[full_name]" id="contact_form_full_name">
+    </div>
+    
+    <div class="field">
+      <label for="contact_form_email" class="label">
+        Email
+      </label><br>
+      <input placeholder="Email" type="text" name="contact_form[email]" id="contact_form_email">
+    </div>
+    
+    <div class="field">
+      <label for="contact_form_order_num" class="label">
+        Order Num
+      </label><br>
+      <input placeholder="Order Number" type="text" name="contact_form[order_num]" id="contact_form_order_num">
+    </div>
+    
+    <div class="field">
+      <label for="contact_form_comments" class="label">
+        Comments
+      </label><br>
+      <textarea placeholder="enter comments here" type="text" name="contact_form[comments]" id="contact_form_comments"></textarea>
+    </div>
+    
+    <div class="field">
+      <label for="contact_form_subject" class="label">
+        Subject
+      </label><br>
+      <select name="contact_form[subject_id]" id="contact_form_comments">
+        <% Subject.order('priority ASC').each do |x| %>
+          <option value=<%=x.id%>>
+            <%= x.name%>
+          </option>
+        <% end %>
+      </select>
+    </div>
+    
+    <div class="actions">
+      <input type="submit" name="commit" value="Create Contact Form">
+    </div>
 
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  </form>
 <% end %>
 
-<h2>Aria Label Attributes</h2>
+  <h2>Aria Label Attributes</h2>
 
 <%= form_for(@contact_form) do |f| %>
   <% if @contact_form.errors.any? %>
@@ -130,28 +205,52 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :full_name, "Your Full name", :class => "label" %><br>
-    <%= f.text_field :full_name, placeholder: 'ex: John Doe', 'aria-label' => 'value', 'aria-invalid' => 'false' %>
-  </div>
-  <div class="field">
-    <%= f.label :email, :class => "label" %><br>
-    <%= f.text_field :email, placeholder: 'ex: email@example.com', 'aria-label' => 'value', 'aria-invalid' => 'false' %>
-  </div>
-  <div class="field">
-    <%= f.label :order_num, :class => "label" %><br>
-    <%= f.text_field :order_num, placeholder: 'ex: 45', 'aria-label' => 'value', 'aria-invalid' => 'false' %>
-  </div>
-  <div class="field">
-    <%= f.label :comments, :class => "label" %><br>
-    <%= f.text_area :comments, placeholder: 'Your comments here...', 'aria-label' => 'value', 'aria-invalid' => 'false' %>
-  </div>
-  <div class="field">
-    <%= f.label :subject, :class => "label" %><br>
-    <%= f.collection_select :subject_id, Subject.order('priority ASC'), :id, :name, {}, {'aria-label' => 'value', 'aria-invalid' => 'false'} %>
-
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <form class="new_contact_form" id="new_contact_form" action="/contact_forms" accept-charset="UTF-8" method="post">
+    
+    <div class="field">
+      <label for="contact_form_full_name" class="label">
+        Full Name
+      </label><br>
+      <input placeholder="Full Name" type="text" name="contact_form[full_name]" id="contact_form_full_name" aria-label="value" aria-invalid='false'>
+    </div>
+    
+    <div class="field">
+      <label for="contact_form_email" class="label">
+        Email
+      </label><br>
+      <input placeholder="Email" type="text" name="contact_form[email]" id="contact_form_email" aria-label="value" aria-invalid='false'>
+    </div>
+    
+    <div class="field">
+      <label for="contact_form_order_num" class="label">
+        Order Num
+      </label><br>
+      <input placeholder="Order Number" type="text" name="contact_form[order_num]" id="contact_form_order_num" aria-label="value" aria-invalid='false'>
+    </div>
+    
+    <div class="field">
+      <label for="contact_form_comments" class="label">
+        Comments
+      </label><br>
+      <textarea placeholder="enter comments here" type="text" name="contact_form[comments]" id="contact_form_comments" aria-label="value" aria-invalid='false'></textarea>
+    </div>
+    
+    <div class="field">
+      <label for="contact_form_subject" class="label">
+        Subject
+      </label><br>
+      <select name="contact_form[subject_id]" id="contact_form_comments" aria-label="value" aria-invalid='false'>
+        <% Subject.order('priority ASC').each do |x| %>
+          <option value=<%=x.id%>>
+            <%= x.name%>
+          </option>
+        <% end %>
+      </select>
+    </div>
+    
+    <div class="actions">
+      <input type="submit" name="commit" value="Create Contact Form">
+    </div>
+    
+  </form>
 <% end %>

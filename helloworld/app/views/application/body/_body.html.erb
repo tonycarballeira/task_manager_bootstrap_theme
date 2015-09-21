@@ -17,7 +17,7 @@
 
 				<% if Rails.cache.exist?("your_cache_key") %>
 					<% Rails.cache.read("your_cache_key").each do |x| %>
-						<%= x %>
+						<%= x["full_name"] %>
 					<% end %>
 				<% end %>
 			</p>
