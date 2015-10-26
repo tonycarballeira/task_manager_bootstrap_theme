@@ -1,15 +1,19 @@
 Rails.application.routes.draw do
+  resources :products
   resources :subscriptions
   resources :contact_forms
+  # resources :modules
+
+  # resources :controls
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'contact_forms#new'
+  root 'modules#index', as: :modules
 
-   get  '/module_user' => 'application#module_user'
-
-   post "/subscriptions/new" => "subscriptions#create"
+   get ':id', to: 'modules#show', as: :module
+   
+   # get '/module' => 'modules#show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

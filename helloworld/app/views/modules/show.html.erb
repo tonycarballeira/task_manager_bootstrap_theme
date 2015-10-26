@@ -1,0 +1,58 @@
+<h2><%= @module.sym_name.capitalize + " Module" %></h2></br>
+
+<h4>
+	Active Actions
+</h4>
+
+<!-- Active Module Actions -->
+
+<% sym_array = [] %>
+
+<% @module.attributes.each_pair do |name, value| %>
+	<% if (name.include? "action") && (value == 2) %>
+		<% sym_array << name.dup %>
+	<% end %>
+<% end %></br>
+
+<!-- Active SysRlnSyaSym Actions -->
+
+<% rln_array = [] %>
+
+<% @module.sys_rln_sya_syms.where(:rln_sym_id => @module.sym_id).where(:rln_sya_id => cookies[:user_id]).first.attributes.each_pair do |name, value| %>
+	<% if (name.include? "action") && (value == 2) %>
+		<% rln_array << name.dup %>
+	<% end %>
+<% end %>
+
+<!-- Format Active Rln Actions -->
+
+<% rln_array.each do |x| %>
+
+	<% x.slice!(0, 4) %>
+
+<% end %>
+
+<!-- Active User Actions -->
+<ul>
+	<% (sym_array & rln_array).each do |x| %>
+		<li>
+			<%= x %>
+		</li></br>
+	<% end %>
+</ul>
+
+</br></br>
+
+<!-- Arrays -->
+
+<h4>
+	Active Rln Actions
+</h4></br>
+
+<%= rln_array %></br></br>
+
+<h4>
+	Active Sym Actions
+</h4></br>
+
+<%= sym_array %>

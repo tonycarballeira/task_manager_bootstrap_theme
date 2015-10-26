@@ -45,4 +45,4 @@ test:
   port: 1433
   username: tony
   password: tony2014
-  database: beastly_testing_tony        # or whatever the name is
+  database: beastly_testing_tony        
