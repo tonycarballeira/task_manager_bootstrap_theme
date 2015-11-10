@@ -8,9 +8,13 @@ class ModulesController < ApplicationController
 	end
 
 	def show
-		@module = SysSymModule.find(params["id"].slice(6, 6))
+		# @module = SysSymModule.find(params["id"].slice(6, 6))
+
+		@module = SysSymModule.find(params["id"])
 		
 		# TODO: logging occurs here
+
+		# if module is not associated with current user redirect to index page
 
 		unless SysSyaAccount.find(cookies[:user_id]).sys_sym_modules.include?(@module)
 			redirect_to modules_path

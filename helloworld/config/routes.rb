@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  resources :products
-  resources :subscriptions
-  resources :contact_forms
   # resources :modules
 
   # resources :controls
@@ -11,7 +8,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'modules#index', as: :modules
 
-   get ':id', to: 'modules#show', as: :module
+   # get ':id', to: 'modules#show', as: :module
+
+   get 'module', to: 'modules#show', as: :module
    
    # get '/module' => 'modules#show'
 
