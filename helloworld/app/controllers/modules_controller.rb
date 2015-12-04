@@ -3,7 +3,7 @@ class ModulesController < ApplicationController
 	around_filter :record_not_found
 
 	def index
-		cookies[:user_id] = 1 
+		cookies[:user_id] = 7 
 		@user = SysSyaAccount.find(cookies[:user_id]) 
 	end
 
