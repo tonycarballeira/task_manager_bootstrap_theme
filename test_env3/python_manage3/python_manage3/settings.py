@@ -86,13 +86,13 @@ DATABASES = {
     'default': {
         'NAME': 'beastly_testing_tony',
         'ENGINE': 'sql_server.pyodbc',
-        'USER': 'tony',
-        'PASSWORD': 'tony2014',
         'HOST': '10.0.1.201',
         'PORT': '1433',
+        'USER': 'tony',
+        'PASSWORD': 'tony2014',
         'OPTIONS': {
            'host_is_server': True,
-           'dns': 'odbc1'
+           'dsn': 'odbc1'
        },
     }
 }

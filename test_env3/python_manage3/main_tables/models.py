@@ -97,7 +97,7 @@ class SysRlnSyaSym(models.Model):
     rln_id = models.AutoField(primary_key=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'sys_rln_sya_sym'
 
 
