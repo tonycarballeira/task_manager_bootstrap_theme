@@ -79,6 +79,9 @@ class SysSyaAccount(models.Model):
         managed = True
         db_table = 'sys_sya_account'
 
+    def __unicode__(self):
+        return str(self.sya_id)
+
 
 class SysRlnSyaSym(models.Model):
     # rln_sya_id = models.IntegerField(blank=True, null=True)
