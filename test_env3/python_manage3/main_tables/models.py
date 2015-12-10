@@ -39,11 +39,52 @@ class SysOstObjectStatus(models.Model):
         db_table = 'sys_ost_object_status'
 
 
+class SysSymModule(models.Model):
+    sym_id = models.AutoField(primary_key=True)
+    sym_name = models.CharField(max_length=50, blank=True, null=True)
+    sym_icon = models.CharField(max_length=100, blank=True, null=True)
+    sym_folder = models.CharField(max_length=100, blank=True, null=True)
+    sym_object = models.CharField(max_length=100, blank=True, null=True)
+    sym_sym_id = models.IntegerField(blank=True, null=True)
+    sym_url = models.CharField(max_length=255, blank=True, null=True)
+    sym_priority = models.IntegerField(blank=True, null=True)
+    sym_action_add = models.IntegerField(blank=True, null=True)
+    sym_action_advanced = models.IntegerField(blank=True, null=True)
+    sym_action_archive = models.IntegerField(blank=True, null=True)
+    sym_action_delete = models.IntegerField(blank=True, null=True)
+    sym_action_download = models.IntegerField(blank=True, null=True)
+    sym_action_edit = models.IntegerField(blank=True, null=True)
+    sym_action_run = models.IntegerField(blank=True, null=True)
+    sym_action_test = models.IntegerField(blank=True, null=True)
+    sym_action_view = models.IntegerField(blank=True, null=True)
+    sym_beta_date = models.DateTimeField(blank=True, null=True)
+    sym_ost_id = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'sys_sym_module'
+
+
+class SysSyaAccount(models.Model):
+    sya_id = models.AutoField(primary_key=True)
+    sya_name = models.CharField(max_length=100, blank=True, null=True)
+    sya_email = models.CharField(max_length=100, blank=True, null=True)
+    sya_password = models.CharField(max_length=50, blank=True, null=True)
+    sya_system = models.IntegerField(blank=True, null=True)
+    sya_ste_id = models.IntegerField(blank=True, null=True)
+    sya_ost_id = models.IntegerField(blank=True, null=True)
+    sys_sym_modules = models.ManyToManyField(SysSymModule, through='SysRlnSyaSym')
+
+    class Meta:
+        managed = True
+        db_table = 'sys_sya_account'
+
+
 class SysRlnSyaSym(models.Model):
     # rln_sya_id = models.IntegerField(blank=True, null=True)
     # rln_sym_id = models.IntegerField(blank=True, null=True)
-    rln_sya_id = models.ForeignKey(blank=True, null=True)
-    rln_sym_id = models.ForeignKey(blank=True, null=True)
+    rln_sya = models.ForeignKey(SysSyaAccount, on_delete=models.CASCADE, blank=True, null=True)
+    rln_sym = models.ForeignKey(SysSymModule, on_delete=models.CASCADE, blank=True, null=True)
     rln_sym_action_add = models.IntegerField(blank=True, null=True)
     rln_sym_action_advanced = models.IntegerField(blank=True, null=True)
     rln_sym_action_archive = models.IntegerField(blank=True, null=True)
@@ -153,46 +194,6 @@ class SysStxTextLabel(models.Model):
     class Meta:
         managed = False
         db_table = 'sys_stx_text_label'
-
-
-class SysSyaAccount(models.Model):
-    sya_id = models.AutoField(primary_key=True)
-    sya_name = models.CharField(max_length=100, blank=True, null=True)
-    sya_email = models.CharField(max_length=100, blank=True, null=True)
-    sya_password = models.CharField(max_length=50, blank=True, null=True)
-    sya_system = models.IntegerField(blank=True, null=True)
-    sya_ste_id = models.IntegerField(blank=True, null=True)
-    sya_ost_id = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'sys_sya_account'
-
-
-class SysSymModule(models.Model):
-    sym_id = models.AutoField(primary_key=True)
-    sym_name = models.CharField(max_length=50, blank=True, null=True)
-    sym_icon = models.CharField(max_length=100, blank=True, null=True)
-    sym_folder = models.CharField(max_length=100, blank=True, null=True)
-    sym_object = models.CharField(max_length=100, blank=True, null=True)
-    sym_sym_id = models.IntegerField(blank=True, null=True)
-    sym_url = models.CharField(max_length=255, blank=True, null=True)
-    sym_priority = models.IntegerField(blank=True, null=True)
-    sym_action_add = models.IntegerField(blank=True, null=True)
-    sym_action_advanced = models.IntegerField(blank=True, null=True)
-    sym_action_archive = models.IntegerField(blank=True, null=True)
-    sym_action_delete = models.IntegerField(blank=True, null=True)
-    sym_action_download = models.IntegerField(blank=True, null=True)
-    sym_action_edit = models.IntegerField(blank=True, null=True)
-    sym_action_run = models.IntegerField(blank=True, null=True)
-    sym_action_test = models.IntegerField(blank=True, null=True)
-    sym_action_view = models.IntegerField(blank=True, null=True)
-    sym_beta_date = models.DateTimeField(blank=True, null=True)
-    sym_ost_id = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'sys_sym_module'
 
 
 class SysSywWhitelist(models.Model):

@@ -91,7 +91,8 @@ DATABASES = {
         'HOST': '10.0.1.201',
         'PORT': '1433',
         'OPTIONS': {
-           'host_is_server': True
+           'host_is_server': True,
+           'dns': 'odbc1'
        },
     }
 }
