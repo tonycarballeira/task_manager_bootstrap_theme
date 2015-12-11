@@ -11,6 +11,10 @@ from __future__ import unicode_literals
 
 from django.db import models
 
+from django.contrib.auth import models as auth_models
+
+from django.conf import settings
+
 
 class DjangoMigrations(models.Model):
     app = models.CharField(max_length=255)
@@ -64,11 +68,51 @@ class SysSymModule(models.Model):
         managed = True
         db_table = 'sys_sym_module'
 
+# an attempt to use django authentication below
+
+# class CustomUserManager(auth_models.BaseUserManager):
+#     def create_user(self, sya_email, password):
+
+#         user = self.model(
+#            email = CustomUserManager.normalize_email(sya_email), 
+#         )
+
+#         user.set_password(sya_password)
+#         user.save(using = self._db)
+#         return user
+
+
+# class SysSyaAccount(auth_models.AbstractBaseUser):
+#     sya_id = models.AutoField(primary_key=True)
+#     sya_name = models.CharField(max_length=100, blank=True, null=True)
+#     sya_email = models.EmailField(max_length=100, unique=True, blank=True, null=True)
+#     sya_password = models.CharField(max_length=50, blank=True, null=True)
+#     sya_system = models.IntegerField(blank=True, null=True)
+#     sya_ste_id = models.IntegerField(blank=True, null=True)
+#     sya_ost_id = models.IntegerField(blank=True, null=True)
+#     sys_sym_modules = models.ManyToManyField(SysSymModule, through='SysRlnSyaSym')
+    
+#     USERNAME_FIELD = 'sya_email'
+#     PASSWORD_FIELD = 'sya_password'
+#     objects = CustomUserManager()
+
+#     class Meta:
+#         managed = True
+#         db_table = 'sys_sya_account'
+
+#     def __unicode__(self):
+#         return str(self.sya_id)
+
+#     def set_password(self, raw_password):
+#         self.sya_password = make_password(raw_password)
+
+#     def get_full_name(self):
+#         return self.sya_email
 
 class SysSyaAccount(models.Model):
     sya_id = models.AutoField(primary_key=True)
     sya_name = models.CharField(max_length=100, blank=True, null=True)
-    sya_email = models.CharField(max_length=100, blank=True, null=True)
+    sya_email = models.EmailField(max_length=100, unique=True, blank=True, null=True)
     sya_password = models.CharField(max_length=50, blank=True, null=True)
     sya_system = models.IntegerField(blank=True, null=True)
     sya_ste_id = models.IntegerField(blank=True, null=True)
@@ -78,9 +122,6 @@ class SysSyaAccount(models.Model):
     class Meta:
         managed = True
         db_table = 'sys_sya_account'
-
-    def __unicode__(self):
-        return str(self.sya_id)
 
 
 class SysRlnSyaSym(models.Model):
