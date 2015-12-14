@@ -1,6 +1,9 @@
 <h1>{{ template_title }}</h1>
+
 <ul>
-{% for instance in data %}
-	<li>{{instance.sym_name}}</li>
-{% endfor %}
+	{% for instance in data %}
+		<li>
+			{{instance.sym_name}}
+		</li>
+	{% endfor %}
 </ul>

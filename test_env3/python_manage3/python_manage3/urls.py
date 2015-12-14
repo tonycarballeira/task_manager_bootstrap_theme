@@ -21,5 +21,6 @@ import main_tables.views
 
 urlpatterns = [
 	url(r'^$', main_tables.views.home),
+	url(r'^sign_in$', main_tables.views.sign_in),
     # url(r'^admin/', include(admin.site.urls)),
 ]
