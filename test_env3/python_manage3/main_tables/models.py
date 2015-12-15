@@ -1,11 +1,11 @@
 # This is an auto-generated Django model module.
-# You'll have to do the following manually to clean this up:
-#   * Rearrange models' order
+# You"ll have to do the following manually to clean this up:
+#   * Rearrange models" order
 #   * Make sure each model has one field with primary_key=True
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
-# Feel free to rename the models, but don't rename db_table values or field names.
+# Feel free to rename the models, but don"t rename db_table values or field names.
 #
-# Also note: You'll have to insert the output of 'django-admin sqlcustom [app_label]'
+# Also note: You"ll have to insert the output of "django-admin sqlcustom [app_label]"
 # into your database.
 from __future__ import unicode_literals
 
@@ -23,7 +23,7 @@ class DjangoMigrations(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'django_migrations'
+        db_table = "django_migrations"
 
 
 class SchemaMigrations(models.Model):
@@ -31,7 +31,7 @@ class SchemaMigrations(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'schema_migrations'
+        db_table = "schema_migrations"
 
 
 class SysOstObjectStatus(models.Model):
@@ -40,7 +40,7 @@ class SysOstObjectStatus(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'sys_ost_object_status'
+        db_table = "sys_ost_object_status"
 
 
 class SysSymModule(models.Model):
@@ -66,7 +66,7 @@ class SysSymModule(models.Model):
 
     class Meta:
         managed = True
-        db_table = 'sys_sym_module'
+        db_table = "sys_sym_module"
 
 # an attempt to use django authentication below
 
@@ -90,15 +90,15 @@ class SysSymModule(models.Model):
 #     sya_system = models.IntegerField(blank=True, null=True)
 #     sya_ste_id = models.IntegerField(blank=True, null=True)
 #     sya_ost_id = models.IntegerField(blank=True, null=True)
-#     sys_sym_modules = models.ManyToManyField(SysSymModule, through='SysRlnSyaSym')
+#     sys_sym_modules = models.ManyToManyField(SysSymModule, through="SysRlnSyaSym")
     
-#     USERNAME_FIELD = 'sya_email'
-#     PASSWORD_FIELD = 'sya_password'
+#     USERNAME_FIELD = "sya_email"
+#     PASSWORD_FIELD = "sya_password"
 #     objects = CustomUserManager()
 
 #     class Meta:
 #         managed = True
-#         db_table = 'sys_sya_account'
+#         db_table = "sys_sya_account"
 
 #     def __unicode__(self):
 #         return str(self.sya_id)
@@ -117,11 +117,11 @@ class SysSyaAccount(models.Model):
     sya_system = models.IntegerField(blank=True, null=True)
     sya_ste_id = models.IntegerField(blank=True, null=True)
     sya_ost_id = models.IntegerField(blank=True, null=True)
-    sys_sym_modules = models.ManyToManyField(SysSymModule, through='SysRlnSyaSym')
+    sys_sym_modules = models.ManyToManyField(SysSymModule, through="SysRlnSyaSym")
 
     class Meta:
         managed = True
-        db_table = 'sys_sya_account'
+        db_table = "sys_sya_account"
 
 
 class SysRlnSyaSym(models.Model):
@@ -142,7 +142,7 @@ class SysRlnSyaSym(models.Model):
 
     class Meta:
         managed = True
-        db_table = 'sys_rln_sya_sym'
+        db_table = "sys_rln_sya_sym"
 
 
 class SysSlaLogAction(models.Model):
@@ -162,7 +162,7 @@ class SysSlaLogAction(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'sys_sla_log_action'
+        db_table = "sys_sla_log_action"
 
 
 class SysSleLogError(models.Model):
@@ -183,7 +183,7 @@ class SysSleLogError(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'sys_sle_log_error'
+        db_table = "sys_sle_log_error"
 
 
 class SysSlsLogSecurity(models.Model):
@@ -201,7 +201,7 @@ class SysSlsLogSecurity(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'sys_sls_log_security'
+        db_table = "sys_sls_log_security"
 
 
 class SysSqcQueryControl(models.Model):
@@ -214,7 +214,7 @@ class SysSqcQueryControl(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'sys_sqc_query_control'
+        db_table = "sys_sqc_query_control"
 
 
 class SysSteSite(models.Model):
@@ -226,7 +226,7 @@ class SysSteSite(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'sys_ste_site'
+        db_table = "sys_ste_site"
 
 
 class SysStxTextLabel(models.Model):
@@ -237,7 +237,7 @@ class SysStxTextLabel(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'sys_stx_text_label'
+        db_table = "sys_stx_text_label"
 
 
 class SysSywWhitelist(models.Model):
@@ -249,7 +249,7 @@ class SysSywWhitelist(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'sys_syw_whitelist'
+        db_table = "sys_syw_whitelist"
 
 
 class TstDmoDemo(models.Model):
@@ -262,7 +262,7 @@ class TstDmoDemo(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'tst_dmo_demo'
+        db_table = "tst_dmo_demo"
 
 
 class TstExpExample(models.Model):
@@ -277,4 +277,4 @@ class TstExpExample(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'tst_exp_example'
+        db_table = "tst_exp_example"

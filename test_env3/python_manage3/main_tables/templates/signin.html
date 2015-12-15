@@ -3,11 +3,28 @@
 		<head></head>
 
 		<body>
-			<h1>Sign In</h1>
-				<form method='POST' action=''>
-					{{ form.as_p }}
-					<input type='submit'>
-				</form>
+			{% with cookie=request.COOKIES.new_cook %}    
+			
+				{% if cookie == 'signed_in' %}
+
+					<p>you are signed in!</p>
+
+				{% else %}
+
+					<h1>Sign In</h1>
+				
+					<form method="POST" action="/sign_in"> {% csrf_token %}
+						{{ form.as_p }}
+						<input type="submit">
+					</form>
+					
+					</br>
+
+					<p>{{ error }}</p>
+					
+				{% endif %}
+
+			{% endwith %}		
 
 		</body>
 
