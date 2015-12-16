@@ -16,11 +16,12 @@ from django.db import connection
 
 # Create your views here.
 def home(request):
-	
+	cookie = request.COOKIES.get("new_cook")
 	account = "Modules"
 	context = {
 		"template_title": account,
-		"data": SysSyaAccount.objects.filter(sya_id=7)[0].sys_sym_modules.all()
+		"cookie": cookie,
+		"data": SysSyaAccount.objects.filter(sya_id=int(cookie))[0].sys_sym_modules.all()
 	}
 	return render(request, "home.html", context)
 
@@ -32,7 +33,7 @@ def sign_in(request):
 
 		#::USING RAW SQL::
 		cursor = connection.cursor()
-		sql_query = cursor.execute("SELECT * FROM  sys_sya_account WHERE sya_name=%s AND sya_password=%s", (u_name, u_password,)) 
+		sql_query = cursor.execute("SELECT * FROM  sys_sya_account WHERE sya_name=%s AND sya_password=%s", (u_name, u_password,))
 		rows = sql_query.fetchall()
 		rows_length = len(rows)
 
@@ -41,8 +42,10 @@ def sign_in(request):
 		# length = len(query)
 
 		if rows_length > 0:
-			response = HttpResponseRedirect("sign_in", locals())
-			response.set_cookie("new_cook", "signed_in", max_age = 50000)
+			for row in rows:
+				u_id = row.sya_id
+			response = HttpResponseRedirect("/", locals())
+			response.set_cookie("new_cook", "%d" % (u_id), max_age = 50000) 
 			return response
 
 		else:
