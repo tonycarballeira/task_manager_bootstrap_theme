@@ -28,13 +28,15 @@ def sign_in(request):
 	if request.method == "POST":
 		u_name = request.POST.get("sya_name")
 		u_password = request.POST.get("sya_password")
-		cursor = connection.cursor()
 		form = SysSyaAccountForm(initial={"sya_name":"%(u_name)s" % { "u_name":u_name}, "sya_password":"%(u_password)s" % {"u_password":u_password} })
-		#using raw sql
+
+		#::USING RAW SQL::
+		cursor = connection.cursor()
 		sql_query = cursor.execute("SELECT * FROM  sys_sya_account WHERE sya_name=%s AND sya_password=%s", (u_name, u_password,)) 
 		rows = sql_query.fetchall()
 		rows_length = len(rows)
-		#using orm
+
+		#::USING ORM::
 		# query = SysSyaAccount.objects.filter(sya_name="%(u_name)s" % {"u_name":u_name}).filter(sya_password="%(u_password)s" % {"u_password":u_password})
 		# length = len(query)
 
