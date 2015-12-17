@@ -44,7 +44,7 @@ def sign_in(request):
 		if rows_length > 0:
 			for row in rows:
 				u_id = row.sya_id
-			response = HttpResponseRedirect("/", locals())
+			response = HttpResponseRedirect("/sign_in", locals())
 			response.set_cookie("new_cook", "%d" % (u_id), max_age = 50000) 
 			return response
 

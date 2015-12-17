@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 	<html>
-		<head></head>
+		<head>
+			{% load helpers %}
+		</head>
 
 		<body>
 			{% with cookie=request.COOKIES.new_cook %}    
 			
-				{% if cookie == 'signed_in' %}
+				{% if cookie %}
 
 					<p>you are signed in!</p>
+
+					<h2>Your Module Names:</h2>
+
+					{% my_modules cookie as mods %}
+
+					<ul>
+						{% for x in mods %}
+							<li>
+								{{x}}
+							</li>
+						{% endfor %}
+					</ul>
 
 				{% else %}
 
