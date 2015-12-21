@@ -81,11 +81,14 @@ def sign_in(request):
 				context_instance=RequestContext(request))
 
 
+def module(request, value):
 
-	    
+	cookie = request.COOKIES.get("new_cook")
+	module = SysSymModule.objects.filter(sym_id=value)
 
+	context = {
+		"cookie": cookie,
+		"module": module,
+	}
 
-
-
-
-
+	return render(request, "module.html", context)

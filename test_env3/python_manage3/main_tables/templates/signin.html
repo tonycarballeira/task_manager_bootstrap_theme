@@ -18,7 +18,8 @@
 					<ul>
 						{% for x in mods %}
 							<li>
-								{{x}}
+								<a href="{% url 'module' x.sym_id %}">{{x}}</a>
+								
 							</li>
 						{% endfor %}
 					</ul>

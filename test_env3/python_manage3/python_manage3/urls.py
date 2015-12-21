@@ -26,7 +26,8 @@ import main_tables.views
 urlpatterns = [
 	url(r"^$", main_tables.views.home),
 	url(r"^sign_in$", main_tables.views.sign_in),
-    url(r'^modules$', ListView.as_view( model=SysSymModule, template_name="modules.html", context_object_name="sys_sym_modules", )),
+    url(r"^module/(\d+)/", main_tables.views.module, name="module"),
+    # url(r'^modules$', ListView.as_view( model=SysSymModule, template_name="modules.html", context_object_name="sys_sym_modules", )),
 ]
 
 # urlpatterns = patterns('',

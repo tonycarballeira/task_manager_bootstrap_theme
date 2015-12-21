@@ -71,6 +71,10 @@ class SysSymModule(models.Model):
     def __unicode__(self):
         return self.sym_name
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('module_detail')
+
 # an attempt to use django authentication below
 
 # class CustomUserManager(auth_models.BaseUserManager):
