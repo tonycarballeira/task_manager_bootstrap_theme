@@ -12,6 +12,10 @@ import Cookie
 
 from .functions import *
 
+from django.shortcuts import get_object_or_404
+
+from django.views.generic import ListView
+
  
 
 # Create your views here.
@@ -27,6 +31,12 @@ def home(request):
 	}
 
 	return render(request, "home.html", context)
+
+
+
+
+
+
 
 def sign_in(request):
 
@@ -62,13 +72,17 @@ def sign_in(request):
 			return	render_to_response("signin.html", 
 					locals(), 
 					context_instance=RequestContext(request))
-	
+
 	else:
 
 		form = SysSyaAccountForm()
 		return	render_to_response("signin.html",								 
 				locals(), 
 				context_instance=RequestContext(request))
+
+
+
+	    
 
 
 

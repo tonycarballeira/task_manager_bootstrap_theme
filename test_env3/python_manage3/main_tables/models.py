@@ -68,6 +68,9 @@ class SysSymModule(models.Model):
         managed = True
         db_table = "sys_sym_module"
 
+    def __unicode__(self):
+        return self.sym_name
+
 # an attempt to use django authentication below
 
 # class CustomUserManager(auth_models.BaseUserManager):

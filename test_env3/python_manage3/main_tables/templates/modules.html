@@ -1,0 +1,17 @@
+
+
+{% block content %}
+
+    <h2>Modules</h2>
+
+    <ul>
+
+        {% for x in sys_sym_modules %}
+
+            <li>{{ x.sym_name }}</li>
+
+        {% endfor %}
+
+    </ul>
+
+{% endblock %}

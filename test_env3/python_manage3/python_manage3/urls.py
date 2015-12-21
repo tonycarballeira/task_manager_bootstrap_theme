@@ -15,12 +15,26 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.views.generic import ListView
+from main_tables.models import *
+import Cookie
 
 import main_tables.views
+
 
 
 urlpatterns = [
 	url(r"^$", main_tables.views.home),
 	url(r"^sign_in$", main_tables.views.sign_in),
-    # url(r"^admin/", include(admin.site.urls)),
+    url(r'^modules$', ListView.as_view( model=SysSymModule, template_name="modules.html", context_object_name="sys_sym_modules", )),
 ]
+
+# urlpatterns = patterns('',
+#     (r'^modules/$', ListView.as_view(
+#         model=SysSymModule,
+#         template_name='modules.html'
+#     )),
+# )
+
+
+ # url(r"^admin/", include(admin.site.urls)),
