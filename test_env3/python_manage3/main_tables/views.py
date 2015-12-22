@@ -19,22 +19,18 @@ from django.views.generic import ListView
  
 
 # Create your views here.
-def home(request):
+
+def module(request, value):
 
 	cookie = request.COOKIES.get("new_cook")
-	account = "Modules"
+	module = SysSymModule.objects.filter(sym_id=value)
 
 	context = {
-		"template_title": account,
 		"cookie": cookie,
-		"data": SysSyaAccount.objects.filter(sya_id=int(cookie))[0].sys_sym_modules.all()
+		"module": module,
 	}
 
-	return render(request, "home.html", context)
-
-
-
-
+	return render(request, "module.html", context)
 
 
 
@@ -81,14 +77,17 @@ def sign_in(request):
 				context_instance=RequestContext(request))
 
 
-def module(request, value):
+def home(request):
 
 	cookie = request.COOKIES.get("new_cook")
-	module = SysSymModule.objects.filter(sym_id=value)
+	account = "Modules"
 
 	context = {
+		"template_title": account,
 		"cookie": cookie,
-		"module": module,
+		"data": SysSyaAccount.objects.filter(sya_id=int(cookie))[0].sys_sym_modules.all()
 	}
 
-	return render(request, "module.html", context)
+	return render(request, "home.html", context)
+
+
