@@ -54,9 +54,9 @@ def sign_in(request):
 		# query = SysSyaAccount.objects.filter(sya_name="%(u_name)s" % {"u_name":u_name}).filter(sya_password="%(u_password)s" % {"u_password":u_password})
 		# length = len(query)
 
-		if query['length'] > 0:
+		if query["length"] > 0:
 
-			for row in query['rows']:
+			for row in query["rows"]:
 				u_id = row.sya_id
 			response = HttpResponseRedirect("/sign_in", locals())
 			response.set_cookie("new_cook", "%d" % (u_id), max_age = 50000) 

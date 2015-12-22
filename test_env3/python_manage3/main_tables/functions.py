@@ -7,8 +7,8 @@ def run_query(query, *args):
 	records = sql_query.fetchall()
 
 	results = {
-		'rows': records,
-		'length': len(records)
+		"rows": records,
+		"length": len(records)
 	}
 
 	return results
