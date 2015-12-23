@@ -57,6 +57,7 @@ def sign_in(request):
 
 			for row in query["rows"]:
 				u_id = row.sya_id
+				
 			response = HttpResponseRedirect("/", locals())
 			response.set_cookie("new_cook", "%d" % (u_id), max_age = 50000)
 			return response
