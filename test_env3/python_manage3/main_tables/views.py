@@ -33,7 +33,6 @@ def module(request, value):
 	return render(request, "module.html", context)
 
 
-
 def sign_in(request):
 
 	if request.method == "POST":
@@ -59,7 +58,7 @@ def sign_in(request):
 			for row in query["rows"]:
 				u_id = row.sya_id
 			response = HttpResponseRedirect("/sign_in", locals())
-			response.set_cookie("new_cook", "%d" % (u_id), max_age = 50000) 
+			response.set_cookie("new_cook", "%d" % (u_id), max_age = 50000)
 			return response
 
 		else:
@@ -89,5 +88,4 @@ def home(request):
 	}
 
 	return render(request, "home.html", context)
-
 
