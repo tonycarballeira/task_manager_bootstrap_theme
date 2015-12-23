@@ -57,7 +57,7 @@ def sign_in(request):
 
 			for row in query["rows"]:
 				u_id = row.sya_id
-			response = HttpResponseRedirect("/sign_in", locals())
+			response = HttpResponseRedirect("/", locals())
 			response.set_cookie("new_cook", "%d" % (u_id), max_age = 50000)
 			return response
 
@@ -84,7 +84,6 @@ def home(request):
 	context = {
 		"template_title": account,
 		"cookie": cookie,
-		"data": SysSyaAccount.objects.filter(sya_id=int(cookie))[0].sys_sym_modules.all()
 	}
 
 	return render(request, "home.html", context)
