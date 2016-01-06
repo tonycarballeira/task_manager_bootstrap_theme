@@ -23,11 +23,16 @@ from django.views.generic import ListView
 def module(request, value):
 
 	cookie = request.COOKIES.get("new_cook")
-	module = SysSymModule.objects.filter(sym_id=value)
+	module = SysSymModule.objects.filter(sym_id=value)[0]
+	params = request.GET
+	# view = "ckbe/modules/%s/index.html" % { str(module.sym_folder) }
+	view = "ckbe/modules/{module.sym_folder}/index.html".format(**locals())
 
 	context = {
 		"cookie": cookie,
 		"module": module,
+		"params": params,
+		"view": view,
 	}
 
 	return render(request, "module.html", context)
@@ -57,7 +62,7 @@ def sign_in(request):
 
 			for row in query["rows"]:
 				u_id = row.sya_id
-				
+
 			response = HttpResponseRedirect("/", locals())
 			response.set_cookie("new_cook", "%d" % (u_id), max_age = 50000)
 			return response
