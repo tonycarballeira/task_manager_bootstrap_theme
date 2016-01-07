@@ -58,6 +58,12 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'python_manage3.urls'
 
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
+)
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
