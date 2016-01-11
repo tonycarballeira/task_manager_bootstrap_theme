@@ -38,7 +38,7 @@ def module(request, value):
 	return render(request, "module.html", context)
 
 
-def sign_in(request):
+def home(request):
 
 	if request.method == "POST":
 

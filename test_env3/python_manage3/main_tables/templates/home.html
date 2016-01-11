@@ -1,9 +1,65 @@
-<h1>{{ template_title }}</h1>
+{% extends 'base.html' %}
+{% load helpers %}
 
-<ul>
-	{% for instance in data %}
-		<li>
-			{{instance.sym_name}}
-		</li>
-	{% endfor %}
-</ul>
+{% block body_block %}
+
+	{% with cookie=request.COOKIES.new_cook %}    
+	
+		{% if cookie %}
+
+			<p>you are signed in!</p>
+
+			{% my_modules cookie as mods %}
+			{% my_group cookie as groups %}
+			{% sub_groups cookie as sub_groups %}
+
+			<ul>
+
+				{% for z in groups %}
+
+					<h3> {{z}} </h3>
+
+					{% for x in sub_groups %}
+
+						{% if x.sym_sym_id == z.sym_id %}
+
+							<lh> {{x}} </lh>
+
+							{% for y in mods %}
+
+								{% if y.sym_sym_id == x.sym_id %}
+
+									<li>
+										<a href="{% url 'module' y.sym_id %}">{{y}}</a>
+									</li>
+
+								{% endif %}
+
+							{% endfor %}
+
+						{% endif %}
+
+					{% endfor %}
+
+				{% endfor %}
+
+			</ul>
+
+		{% else %}
+
+			<h1>Sign In</h1>
+		
+			<form method="POST" action="/sign_in"> {% csrf_token %}
+				{{ form.as_p }}
+				<input type="submit">
+			</form>
+			
+			</br>
+
+			<p>{{ error }}</p>			
+			
+		{% endif %}
+
+	{% endwith %}	
+
+{% endblock %}	
