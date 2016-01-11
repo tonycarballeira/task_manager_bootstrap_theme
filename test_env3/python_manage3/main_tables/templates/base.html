@@ -1,4 +1,4 @@
-{% load staticfiles	 %}
+{% load staticfiles	%}
 
 <!DOCTYPE html>
 <html>
@@ -10,11 +10,11 @@
 
     <body>
 
-		<header class="header"></header>
+		{% include 'header.html' %}
 
-		<div class="bod">{% block body_block %}{% endblock %}</div>
+		{% block body_block %}{% endblock %}
 
-		<footer class="footer"></footer>
+		{% include 'footer.html' %}
 
     </body>
 

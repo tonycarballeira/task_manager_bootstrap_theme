@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% load helpers %}
 
-
 {% block body_block %}
+
 	{% with cookie=request.COOKIES.new_cook %}    
 	
 		{% if cookie %}
@@ -61,6 +61,5 @@
 		{% endif %}
 
 	{% endwith %}	
-{% endblock %}	
 
-	
+{% endblock %}	
