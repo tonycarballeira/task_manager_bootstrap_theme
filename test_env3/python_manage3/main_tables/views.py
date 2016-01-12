@@ -23,20 +23,40 @@ from django.views.generic import ListView
 def module(request, value):
 
 	cookie = request.COOKIES.get("new_cook")
-	module = SysSymModule.objects.filter(sym_id=value)[0]
+	mod = SysSymModule.objects.filter(sym_id=value).exclude(sym_folder = None)
 	params = request.GET
-	# view = "ckbe/modules/%s/index.html" % { str(module.sym_folder) }
-	view = "ckbe/modules/{module.sym_folder}/index.html".format(**locals())
+	check = []
 
-	context = {
-		"cookie": cookie,
-		"module": module,
-		"params": params,
-		"view": view,
-	}
+	if len(mod) > 0:
+		module = mod[0]
+		view = "ckbe/modules/{module.sym_folder}/index.html".format(**locals())
+		# view = "ckbe/modules/%s/index.html" % { str(module.sym_folder) } 
+	
+	if cookie:
 
-	return render(request, "module.html", context)
+		account = SysSyaAccount.objects.filter(sya_id=cookie)[0]
+		modules = account.sys_sym_modules.all()
+		
+		for x in modules:
+			if (x.sym_id == int(value)) and (x.sym_folder != None):
+				check.append(x)
 
+	if (len(check) > 0):
+
+		context = {
+			"cookie": cookie,
+			"module": module,
+			"params": params,
+			"view": view,
+		}
+
+		return render(request, "module.html", context)
+
+	else:
+		
+		return HttpResponseRedirect("/", locals())
+
+	
 
 def home(request):
 
@@ -70,27 +90,17 @@ def home(request):
 		else:
 
 			error = "User not found"
-			return	render_to_response("signin.html", 
+			return	render_to_response("home.html", 
 					locals(), 
 					context_instance=RequestContext(request))
 
 	else:
 
 		form = SysSyaAccountForm()
-		return	render_to_response("signin.html",								 
+		return	render_to_response("home.html",								 
 				locals(), 
 				context_instance=RequestContext(request))
 
 
-def home(request):
 
-	cookie = request.COOKIES.get("new_cook")
-	account = "Modules"
-
-	context = {
-		"template_title": account,
-		"cookie": cookie,
-	}
-
-	return render(request, "home.html", context)
 
