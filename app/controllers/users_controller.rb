@@ -19,6 +19,13 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def destroy
+  		@user = User.find(params[:id])
+  		@user.destroy
+ 
+  		redirect_to accounts_path, :notice => "Account deleted!"
+	end
+
 	private
   	
   	## Strong Parameters 
