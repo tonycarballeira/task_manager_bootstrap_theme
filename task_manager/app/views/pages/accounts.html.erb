@@ -18,7 +18,11 @@
         	<td>
         		<%= acc.email %>
         	</td>
-    	</tr>
+
+        	<td><%= link_to 'Destroy', user_path(acc),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    		</tr>
 
 	<% end %>
 
