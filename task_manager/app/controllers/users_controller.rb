@@ -7,9 +7,13 @@ class UsersController < ApplicationController
 	def create
 
 		@user = User.new(user_params)
-		
+
 		if @user.save
-			redirect_to root_url, :notice => "Signed up!"
+			if current_user.manager
+				redirect_to accounts_path, :notice => "New Account Created!"
+			else
+				redirect_to root_url, :notice => "Signed up!"
+			end
 		else
 			render "new"
 		end
