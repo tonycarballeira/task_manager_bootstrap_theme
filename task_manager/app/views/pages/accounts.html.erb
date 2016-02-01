@@ -24,6 +24,12 @@
 
         	<td><%= link_to 'Destroy', user_path(acc), method: :delete,data: { confirm: 'Are you sure?' } %></td>
 
+        	<% if acc.active %>
+        		<td><%= link_to 'Suspend', suspend_path(acc), data: { confirm: 'Are you sure?' } %></td>
+    		<% else %>
+    			<td><%= link_to 'Activate', activate_path(acc), data: { confirm: 'Are you sure?' } %></td>
+			<% end %>
+
 		</tr>
 
 	<% end %>

@@ -41,6 +41,22 @@ class UsersController < ApplicationController
   		redirect_to accounts_path, :notice => "Account deleted!"
 	end
 
+	def activate
+		@user = User.find(params[:format])
+
+		@user.update_attributes(:active => true)
+
+		redirect_to accounts_path, :notice => "Account Activated!"
+	end
+
+	def suspend
+		@user = User.find(params[:format])
+
+		@user.update_attributes(:active => false)
+
+		redirect_to accounts_path, :notice => "Account Suspended!"
+	end
+
 	private
   	
   	## Strong Parameters 
