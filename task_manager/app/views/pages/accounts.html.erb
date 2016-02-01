@@ -2,14 +2,21 @@
 
 <table>
 
+<% i=0 %>
+
 <% @accounts.each do |acc| %>
+	
+	<% i = i + 1 %>
 
-<tr>
+	<tr>
+		<td>
+			<%= "#{i} - " %>
+		</td>
         <td>
-        <%= acc.email %>
+        	<%= acc.email %>
         </td>
-        </tr>
+    </tr>
 
-    <% end %>
+<% end %>
 
 </table>
