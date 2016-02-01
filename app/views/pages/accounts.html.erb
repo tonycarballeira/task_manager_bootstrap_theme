@@ -11,6 +11,7 @@
 		<% i = i + 1 %>
 
 		<tr>
+			
 			<td>
 				<%= "#{i} - " %>
 			</td>
@@ -19,10 +20,11 @@
         		<%= acc.email %>
         	</td>
 
-        	<td><%= link_to 'Destroy', user_path(acc),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-    		</tr>
+        	<td><%= link_to 'Edit', edit_user_path(acc) %></td>
+
+        	<td><%= link_to 'Destroy', user_path(acc), method: :delete,data: { confirm: 'Are you sure?' } %></td>
+
+		</tr>
 
 	<% end %>
 
