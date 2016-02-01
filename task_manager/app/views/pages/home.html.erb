@@ -3,10 +3,10 @@
 	<% if current_user.manager %>
 
 		<h2>Manager Dash</h2>
-		
+
 		<ul>
-			<li><%= link_to "Accounts", log_out_path %></li>
-			<li><%= link_to "Tasks", log_out_path %></li>
+			<li><%= link_to "Accounts", accounts_path %></li>
+			<li><%= link_to "Tasks", manager_tasks_path %></li>
 		</ul>
 		
 		
