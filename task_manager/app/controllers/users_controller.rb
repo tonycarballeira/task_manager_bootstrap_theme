@@ -19,6 +19,21 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def edit
+    	@user = User.find(params[:id])
+  	end
+
+  	def update
+    	@user = User.find(params[:id])
+ 
+    	if @auser.update(user_params)
+      		redirect_to accounts_path, :notice => "Account Updated!"
+    	else
+      		render 'edit'
+    	end
+  	end
+
+
 	def destroy
   		@user = User.find(params[:id])
   		@user.destroy
