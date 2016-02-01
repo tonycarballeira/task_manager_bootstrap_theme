@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
+
+  get "accounts" => "pages#accounts", :as => "accounts"
+  get "manage_tasks" => "pages#manager_tasks", :as => "manager_tasks"
   
   root :to => "pages#home"
 

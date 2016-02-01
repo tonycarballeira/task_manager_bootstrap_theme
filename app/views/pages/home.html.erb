@@ -1,7 +1,21 @@
 <% if current_user %>
 
-	<h1>Pages#home</h1>
-	<p>Find me in app/views/pages/home.html.erb</p>
+	<% if current_user.manager %>
+
+		<h2>Manager Dash</h2>
+		
+		<ul>
+			<li><%= link_to "Accounts", log_out_path %></li>
+			<li><%= link_to "Tasks", log_out_path %></li>
+		</ul>
+		
+		
+
+	<% else %>
+
+		<h2>Staffer Dash</h2>
+
+	<% end %>
 
 <% else %>
 	
