@@ -28,6 +28,13 @@
 		<%= f.password_field :password_confirmation %>
 	</p>
 
+	<% if current_user && current_user.manager %>
+		<p>
+			<%= f.label(:manager, "Make a Manager") %><br />
+			<%= f.check_box(:manager, {}, true) %>
+		</p>
+	<% end %>
+
 	<p class="button"><%= f.submit %></p>
 	
 <% end %>

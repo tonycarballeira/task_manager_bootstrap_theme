@@ -1,5 +1,7 @@
 <h2>Accounts</h2>
 
+<li><%= link_to "Add new Account", sign_up_path %></li>
+
 <table>
 
 	<% i=0 %>
@@ -12,7 +14,7 @@
 			<td>
 				<%= "#{i} - " %>
 			</td>
-			
+
         	<td>
         		<%= acc.email %>
         	</td>
