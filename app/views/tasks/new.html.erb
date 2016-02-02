@@ -1,3 +1,5 @@
+<% users = User.where(:access => 3)%>
+
 <%= form_for @task do |f| %>
 	<% if @task.errors.any? %>
 		<div class="error_messages">
@@ -21,7 +23,7 @@
 	</p>
 
 	<%= f.label :user_id, "Staffer to assign task to." %><br />
-	<%= f.collection_select :user_id, User.order(:email),:id,:email, include_blank: true %>
+	<%= f.collection_select :user_id, users.order(:email),:id,:email, include_blank: true %>
 
 	<%= f.hidden_field :manager_id, :value => current_user.id%>
 
