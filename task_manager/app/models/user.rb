@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
     	else
       		nil
     	end
-  	end
+	end
 
 	def encrypt_password
     	if password.present?
@@ -24,4 +24,9 @@ class User < ActiveRecord::Base
       		self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
     	end
   end
+
+  def suspend
+    
+  end
+
 end
