@@ -15,6 +15,7 @@ class PagesController < ApplicationController
   	unless current_user && current_user.manager
   		redirect_to root_url, :notice => "You are not a Manager!"
   	end
+    @tasks = Task.all
   end
 
 end
