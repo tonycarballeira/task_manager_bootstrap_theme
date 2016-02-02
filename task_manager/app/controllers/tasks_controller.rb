@@ -6,7 +6,7 @@ class TasksController < ApplicationController
 
 	def create
 
-		@task = Task.new(user_params)
+		@task = Task.new(task_params)
 
 		if @task.save	
 			redirect_to manager_tasks_path, :notice => "New Task Assigned!"
@@ -20,6 +20,6 @@ class TasksController < ApplicationController
   	
   	## Strong Parameters 
 	def task_params
-    	params.require(:user).permit(:title, :body)
+    	params.require(:task).permit(:title, :body, :user_id, :manager_id)
   	end
 end

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "activate" => "users#activate", :as => "activate"
   get "suspend" => "users#suspend", :as => "suspend"
 
+  get "new_task" => "tasks#new", :as => "new_task"
+
   get "accounts" => "pages#accounts", :as => "accounts"
   get "manage_tasks" => "pages#manager_tasks", :as => "manager_tasks"
   
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :sessions
+  resources :tasks
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
