@@ -31,7 +31,12 @@
 			<%= f.select :access, options_for_select(1..3) %>
 		</p>
 
-		
+		<%= f.fields_for :memberships do |b| %>
+
+    		<%= b.label :team_id, "Assign account to a team." %><br />
+			<%= b.collection_select :team_id, Team.order(:name),:id,:name, include_blank: true %>
+
+  		<% end %>
 	<% end %>
 
 	<p class="button"><%= f.submit %></p>
