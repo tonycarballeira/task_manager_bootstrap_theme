@@ -3,6 +3,8 @@
 <li><%= link_to "Add new Account", sign_up_path %></li>
 <li><%= link_to "Add new Team", new_team_path %></li>
 
+<% level = { 1 => 'SuperManager', 2 => 'Manager', 3 => 'Staffer' } %>
+
 <table>
 
 	<% i=0 %>
@@ -25,7 +27,13 @@
         		<td>
         			<%= acc.teams[0].name %> |
         		</td>
+            <% else %>
+                <td>N/A </td>
         	<% end %>
+
+            <td>
+                <%= level[acc.access]%>
+            </td>
 
         	<td><%= link_to 'Edit', edit_user_path(acc) %></td>
 
