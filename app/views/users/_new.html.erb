@@ -28,7 +28,11 @@
 	<% if current_user && current_user.access == 1 %>
 		<p>
 			<%= f.label(:access, "User Access Level") %><br />
-			<%= f.select :access, options_for_select(1..3) %>
+			<select name="user[access]">
+		  		<option value="1">SuperManager</option>
+	  			<option value="2">Manager</option>
+  				<option value="3">Staffer</option>
+			</select> 
 		</p>
 
 		<%= f.fields_for :memberships do |b| %>

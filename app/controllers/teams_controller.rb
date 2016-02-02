@@ -14,6 +14,24 @@ class TeamsController < ApplicationController
 		end
 	end
 
+	def index
+		@teams = Team.all
+	end
+
+	def edit
+    	@team = Team.find(params[:id])
+  	end
+
+  	def update
+    	@team = Team.find(params[:id])
+ 
+    	if @team.update(team_params)
+      		redirect_to teams_path, :notice => "Account Updated!"
+    	else
+      		render 'edit'
+    	end
+  	end
+
 	private
   	
   	## Strong Parameters 
