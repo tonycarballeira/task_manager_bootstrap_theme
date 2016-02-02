@@ -1,0 +1,27 @@
+<%= form_for @task do |f| %>
+	<% if @task.errors.any? %>
+		<div class="error_messages">
+			<h2>Form is invalid</h2>
+			<ul>
+				<% for message in @task.errors.full_messages %>
+					<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<p>
+		<%= f.label :title %><br />
+		<%= f.text_field :title %>
+	</p>
+
+	<p>
+		<%= f.label :body %><br />
+		<%= f.password_field :body %>
+	</p>
+
+	
+
+	<p class="button"><%= f.submit %></p>
+	
+<% end %>
