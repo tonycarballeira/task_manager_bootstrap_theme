@@ -15,6 +15,20 @@ class TasksController < ApplicationController
 		end
 	end
 
+	def edit
+    	@task = Task.find(params[:id])
+  	end
+
+  	def update
+    	@task = Task.find(params[:id])
+ 
+    	if @task.update(task_params)
+      		redirect_to manager_tasks_path, :notice => "Task Updated!"
+    	else
+      		render 'edit'
+    	end
+  	end
+
 
 	private
   	
