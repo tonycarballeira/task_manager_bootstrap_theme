@@ -25,11 +25,18 @@
 		<%= f.password_field :password_confirmation %>
 	</p>
 
-	<% if current_user && current_user.manager %>
+	<% if current_user && current_user.access == 1 %>
 		<p>
-			<%= f.label(:manager, "Make a Manager") %><br />
-			<%= f.check_box(:manager, {}, true) %>
+			<%= f.label(:access, "User Access Level") %><br />
+			<%= f.select :access, options_for_select(1..3) %>
 		</p>
+
+		<%= f.fields_for :memberships do |b| %>
+
+    		<%= b.label :team_id, "Assign account to a team." %><br />
+			<%= b.collection_select :team_id, Team.order(:name),:id,:name, include_blank: true %>
+
+  		<% end %>
 	<% end %>
 
 	<p class="button"><%= f.submit %></p>

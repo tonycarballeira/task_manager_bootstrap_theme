@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
 
-  has_many :memberships, :foreign_key => :user_id, :primary_key => :id
+  has_many :memberships, :foreign_key => :user_id, :primary_key => :id, :dependent => :destroy
   has_many :teams, :through => :memberships
+
+  accepts_nested_attributes_for :memberships
 
 	attr_accessor :password
 

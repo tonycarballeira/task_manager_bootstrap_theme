@@ -1,6 +1,6 @@
 <% if current_user %>
 
-	<% if current_user.manager %>
+	<% if current_user.access < 3 %>
 
 		<h2>Manager Dash</h2>
 

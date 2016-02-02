@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
 	def new
 		@user = User.new
+		@user.memberships.build
 	end
 
 	def create
@@ -9,7 +10,7 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 
 		if @user.save
-			if current_user.manager
+			if current_user.access < 3
 				redirect_to accounts_path, :notice => "New Account Created!"
 			else
 				redirect_to root_url, :notice => "Signed up!"
@@ -61,7 +62,7 @@ class UsersController < ApplicationController
   	
   	## Strong Parameters 
 	def user_params
-    	params.require(:user).permit(:email, :password, :password_confirmation, :manager)
+    	params.require(:user).permit(:email, :password, :password_confirmation, :manager, :access, memberships_attributes: [:team_id, :user_id])
   	end
 
 end
