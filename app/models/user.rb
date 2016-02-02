@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
 
+  has_many :memberships, :foreign_key => :user_id, :primary_key => :id
+  has_many :teams, :through => :memberships
+
 	attr_accessor :password
 
 	before_save :encrypt_password
