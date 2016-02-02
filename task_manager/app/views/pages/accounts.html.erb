@@ -18,8 +18,14 @@
 			</td>
 
         	<td>
-        		<%= acc.email %>
+        		<%= acc.email %> |
         	</td>
+
+        	<% if acc.teams != [] %>
+        		<td>
+        			<%= acc.teams[0].name %> |
+        		</td>
+        	<% end %>
 
         	<td><%= link_to 'Edit', edit_user_path(acc) %></td>
 
