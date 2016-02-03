@@ -28,31 +28,65 @@
 
 	<% i=0 %>
 
-	<% @tasks.each do |task| %>
-	
-		<% i = i + 1 %>
-		<% staffer = User.find(task.user_id) %>
-		<% manager = User.find(task.manager_id) %>
+	<% if current_user.access == 1 %>
 
-		<tr>
-			
-			<td>
-				<%= "#{i} - " %>
-			</td>
+		<% @tasks.each do |task| %>
+		
+			<% i = i + 1 %>
+			<% staffer = User.find(task.user_id) %>
+			<% manager = User.find(task.manager_id) %>
 
-        	<td>
-        		<%= task.title %>
-        	</td>
+			<tr>
+				
+				<td>
+					<%= "#{i} - " %>
+				</td>
 
-        	<td>
-        		<%= staffer.email %>
-			</td>
+	        	<td>
+	        		<%= task.title %>
+	        	</td>
 
-			<td>
-        		<%= manager.email %>
-			</td>
+	        	<td>
+	        		<%= staffer.email %>
+				</td>
 
-		</tr>
+				<td>
+	        		<%= manager.email %>
+				</td>
+
+			</tr>
+
+		<% end %>
+
+	<% else %>
+
+		<% @restricted_tasks.each do |task| %>
+		
+			<% i = i + 1 %>
+			<% staffer = User.find(task.user_id) %>
+			<% manager = User.find(task.manager_id) %>
+
+			<tr>
+				
+				<td>
+					<%= "#{i} - " %>
+				</td>
+
+	        	<td>
+	        		<%= task.title %>
+	        	</td>
+
+	        	<td>
+	        		<%= staffer.email %>
+				</td>
+
+				<td>
+	        		<%= manager.email %>
+				</td>
+
+			</tr>
+
+		<% end %>
 
 	<% end %>
 

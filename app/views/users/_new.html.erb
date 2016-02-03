@@ -29,6 +29,7 @@
 		<p>
 			<%= f.label(:access, "User Access Level") %><br />
 			<select name="user[access]">
+				<option></option>
 		  		<option value="1">SuperManager</option>
 	  			<option value="2">Manager</option>
   				<option value="3">Staffer</option>
@@ -38,9 +39,14 @@
 		<%= f.fields_for :memberships do |b| %>
 
     		<%= b.label :team_id, "Assign account to a team." %><br />
-			<%= b.collection_select :team_id, Team.order(:name),:id,:name, include_blank: true %>
+			<%= b.collection_select :team_id, Team.order(:id),:id,:name, include_blank: true %>
 
   		<% end %>
+
+	<% else %>
+
+		<%= f.hidden_field :access, :value => 3 %>
+		
 	<% end %>
 
 	<p class="button"><%= f.submit %></p>

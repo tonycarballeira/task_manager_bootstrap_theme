@@ -35,6 +35,17 @@ class TasksController < ApplicationController
   		end
 
     	@tasks = Task.all
+
+      @restricted_tasks = []
+
+      Task.all.each do |x|
+        manager = User.where(:id => x.manager_id)[0]
+
+        if (manager.teams != []) && (manager.teams[0].id == current_user.teams[0].id)
+          @restricted_tasks << x
+        end
+      end
+
   	end
 
 

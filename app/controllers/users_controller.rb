@@ -51,6 +51,7 @@ class UsersController < ApplicationController
   		end
   		
   		@accounts = User.all
+  		@staffers = User.where(:access => 3)
 	end
 
 	def activate

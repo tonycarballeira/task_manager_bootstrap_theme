@@ -1,52 +1,110 @@
 <h2>Accounts</h2>
 
 <li><%= link_to "Add new Account", sign_up_path %></li>
-<li><%= link_to "Add new Team", new_team_path %></li>
 
 <% level = { 1 => 'SuperManager', 2 => 'Manager', 3 => 'Staffer' } %>
 
-<table>
+<% if current_user.access == 1 %>
 
-	<% i=0 %>
+    <table>
 
-	<% @accounts.each do |acc| %>
-	
-		<% i = i + 1 %>
+    	<% i=0 %>
 
-		<tr>
-			
-			<td>
-				<%= "#{i} - " %>
-			</td>
+    	<% @accounts.each do |acc| %>
+    	
+    		<% i = i + 1 %>
 
-        	<td>
-        		<%= acc.email %> |
-        	</td>
+    		<tr>
+    			
+    			<td>
+    				<%= "#{i} - " %>
+    			</td>
 
-        	<% if acc.teams != [] %>
-        		<td>
-        			<%= acc.teams[0].name %> |
-        		</td>
-            <% else %>
-                <td>N/A </td>
-        	<% end %>
+            	<td>
+            		<%= acc.email %> |
+            	</td>
 
-            <td>
-                <%= level[acc.access]%>
-            </td>
+            	<% if acc.teams != [] %>
+            		<td>
+            			<%= acc.teams[0].name %> |
+            		</td>
+                <% else %>
+                    <td>N/A </td>
+            	<% end %>
 
-        	<td><%= link_to 'Edit', edit_user_path(acc) %></td>
+                <td>
+                    <%= level[acc.access]%>
+                </td>
 
-        	<td><%= link_to 'Destroy', user_path(acc), method: :delete,data: { confirm: 'Are you sure?' } %></td>
+            	<td><%= link_to 'Edit', edit_user_path(acc) %></td>
 
-        	<% if acc.active %>
-        		<td><%= link_to 'Suspend', suspend_path(acc), data: { confirm: 'Are you sure?' } %></td>
-    		<% else %>
-    			<td><%= link_to 'Activate', activate_path(acc), data: { confirm: 'Are you sure?' } %></td>
-			<% end %>
+            	<td><%= link_to 'Destroy', user_path(acc), method: :delete,data: { confirm: 'Are you sure?' } %></td>
 
-		</tr>
+            	<% if acc.active %>
+            		<td><%= link_to 'Suspend', suspend_path(acc), data: { confirm: 'Are you sure?' } %></td>
+        		<% else %>
+        			<td><%= link_to 'Activate', activate_path(acc), data: { confirm: 'Are you sure?' } %></td>
+    			<% end %>
 
-	<% end %>
+    		</tr>
 
-</table>
+    	<% end %>
+
+    </table>
+
+<% else %>
+    
+    <table>
+
+        <% i=0 %>
+
+        <% @staffers.each do |acc| %>
+        
+            <% i = i + 1 %>
+
+            <% if acc.teams[0].id == current_user.teams[0].id %>
+
+                <tr>
+                    
+                    <td>
+                        <%= "#{i} - " %>
+                    </td>
+
+                    <td>
+                        <%= acc.email %> |
+                    </td>
+
+                    <% if acc.teams != [] %>
+                        <td>
+                            <%= acc.teams[0].name %> |
+                        </td>
+                    <% else %>
+                        <td>N/A </td>
+                    <% end %>
+
+                    <td>
+                        <%= level[acc.access]%>
+                    </td>
+
+                    <td><%= link_to 'Edit', edit_user_path(acc) %></td>
+
+                    <td><%= link_to 'Destroy', user_path(acc), method: :delete,data: { confirm: 'Are you sure?' } %></td>
+
+                    <% if acc.active %>
+                        <td><%= link_to 'Suspend', suspend_path(acc), data: { confirm: 'Are you sure?' } %></td>
+                    <% else %>
+                        <td><%= link_to 'Activate', activate_path(acc), data: { confirm: 'Are you sure?' } %></td>
+                    <% end %>
+
+                </tr>
+
+            <% end %>
+
+        <% end %>
+
+    </table>
+
+<% end %>
+
+
+
