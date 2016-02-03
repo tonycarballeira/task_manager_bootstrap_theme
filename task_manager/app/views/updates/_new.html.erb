@@ -1,0 +1,28 @@
+<%= form_for @update do |f| %>
+	<% if @update.errors.any? %>
+		<div class="error_messages">
+			<h2>Form is invalid</h2>
+			<ul>
+				<% for message in @update.errors.full_messages %>
+					<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<p>
+		<%= f.label :title %><br />
+		<%= f.text_field :title %>
+	</p>
+
+	<p>
+		<%= f.label :body %><br />
+		<%= f.text_area :body %>
+	</p>
+
+	<%= f.hidden_field :task_id, :value => @task.id %>
+	<%= f.hidden_field :user_id, :value => current_user.id %>
+
+	<p class="button"><%= f.submit %></p>
+	
+<% end %>
