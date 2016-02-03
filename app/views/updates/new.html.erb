@@ -1,3 +1,5 @@
+<h2>Create Update</h2>
+
 <%= form_for @update do |f| %>
 	<% if @update.errors.any? %>
 		<div class="error_messages">
@@ -20,7 +22,7 @@
 		<%= f.text_area :body %>
 	</p>
 
-	<%= f.hidden_field :task_id, :value => @task.id %>
+	<%= f.hidden_field :task_id, :value => @task_id %>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 
 	<p class="button"><%= f.submit %></p>

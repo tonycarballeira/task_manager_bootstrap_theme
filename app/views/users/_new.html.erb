@@ -45,7 +45,17 @@
 
 	<% else %>
 
+		<%puts "caca"%>
+		<%puts current_user.teams[0].id%>
+
+		<%= f.fields_for :memberships do |b| %>
+
+			<%= b.hidden_field :team_id, :value => current_user.teams[0].id %>
+
+  		<% end %>
+
 		<%= f.hidden_field :access, :value => 3 %>
+
 		
 	<% end %>
 

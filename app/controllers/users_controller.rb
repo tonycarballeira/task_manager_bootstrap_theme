@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 	def new
 		@user = User.new
 
-		if current_user.access == 1
+		if current_user.access < 3
 			@user.memberships.build
 		end
 	end

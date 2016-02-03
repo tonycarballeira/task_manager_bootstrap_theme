@@ -6,6 +6,12 @@ class ApplicationController < ActionController::Base
 
   	helper_method :current_user
 
+  	before_filter :time_zone
+
+  	def time_zone
+  		Time.zone = Time.now.zone
+  	end
+
 
 	private
 
