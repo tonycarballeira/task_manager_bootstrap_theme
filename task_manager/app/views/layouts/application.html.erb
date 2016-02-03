@@ -1,52 +1,63 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>TaskManager</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
 
-  <nav class="navbar navbar-default navbar-fixed-top">
-   
-    <div class="container-fulid">
+  <head>
+    <title>TaskManager</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <%= csrf_meta_tags %>
+  </head>
 
-      <div class="navbar-header">
+  <body>
 
-       <%= link_to "Task Manager", root_path, class:"navbar-brand" %>
+    <nav class="navbar navbar-default navbar-fixed-top nav_pad">
+     
+      <div class="container-fulid">
+
+        <div class="navbar-header">
+
+         <%= link_to "Task Manager", root_path, class:"navbar-brand" %>
+
+        </div>
+
+        <ul class="nav navbar-nav">
+          <% if current_user && current_user.access == 1 %>
+            <li><%= link_to "Accounts", users_path %></li>
+            <li><%= link_to "Tasks", tasks_path %></li>
+            <li><%= link_to "Teams", teams_path %></li>
+          <% elsif %>
+            <li><%= link_to "Tasks", tasks_path %></li>
+            <li><%= link_to "Teams", teams_path %></li>
+          <% end %>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <% if current_user %>
+            <p class="navbar-text"><%= current_user.email %></p>
+            <li><%= link_to "Log out", log_out_path %></li>
+          <% else %>
+            <li><%= link_to "Sign up", sign_up_path %></li>
+            <li><%= link_to "log in", log_in_path %></li>
+          <% end %>
+        </ul>
 
       </div>
+    </nav>
 
-      <ul class="nav navbar-nav">
-        <% if current_user.access == 1 %>
-          <li><%= link_to "Accounts", users_path %></li>
-          <li><%= link_to "Tasks", tasks_path %></li>
-          <li><%= link_to "Teams", teams_path %></li>
-        <% elsif %>
-          <li><%= link_to "Tasks", tasks_path %></li>
-          <li><%= link_to "Teams", teams_path %></li>
-        <% end %>
-      </ul>
+  	<% flash.each do |name, msg| %>
+      <div class="container">
+        
+        <div class="row">
+          <div class="alert alert-info span4 offset4 " role="alert"><%= content_tag :div, msg, :id => "flash_#{name}" %></div>
+        </div>	
+  
+      </div>    
+	
+  	<% end %>
 
-    </div>
-  </nav>
+  <div><%= yield %></div>
 
-	<div id="user_nav">
-  		<% if current_user %>
-    		Logged in as <%= current_user.email %>.
-    		<%= link_to "Log out", log_out_path %>
-  		<% else %>
-    		<%= link_to "Sign up", sign_up_path %> or
-    		<%= link_to "log in", log_in_path %>
-  		<% end %>
-	</div>
+  </body>
 
-	<% flash.each do |name, msg| %>
-  		<%= content_tag :div, msg, :id => "flash_#{name}" %>
-	<% end %>
-
-<%= yield %>
-
-</body>
 </html>
