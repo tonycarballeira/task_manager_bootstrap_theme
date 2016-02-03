@@ -2,3 +2,12 @@
 
 
 <p><%= @task.body %></p>
+
+<% @updates.each do |x| %>
+
+	<% x.title %></br>
+	<% x.body %>
+
+<% end %>
+
+<% if current_user.access == 3 %>

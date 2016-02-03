@@ -52,6 +52,8 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
+
+    @updates = Update.where(:task_id => @task.id)
   end
 
 
