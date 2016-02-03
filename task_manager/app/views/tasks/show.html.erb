@@ -3,16 +3,68 @@
 
 <p><%= @task.body %></p>
 
-<% @updates.each do |x| %>
+<% i=0 %>
 
-	<% x.title %></br>
-	<% x.body %>
+<table>
 
-<% end %>
+	<tr>
+			
+		<td>
+			
+		</td>
+
+    	<td>
+    		Title
+    	</td>
+
+		<td>
+    		Body
+		</td>
+
+		<td>
+    		Update Time
+		</td>
+
+	</tr>
+
+	<% @updates.each do |x| %>
+	
+		<% i = i + 1 %>
+
+		<tr>
+			
+			<td>
+				<%= "#{i} - " %>
+			</td>
+
+        	<td>
+        		<%= x.title %>
+        	</td>
+
+        	<td>
+        		<%= x.body %>
+			</td>
+
+			<td>
+        		<%= x.created_at.strftime("%m/%d/%Y %I:%M %p") %>
+			</td>
+		</tr>
+
+	<% end %>
+</table>
+
+</br>
+</br>
+
 
 <% if current_user.access == 3 %>
 	
+	<%= link_to "Add new Update", new_update_path(task_id: @task.id) %>
+
+<% end %>
+
+
 
 
 	
-<% end %>
+

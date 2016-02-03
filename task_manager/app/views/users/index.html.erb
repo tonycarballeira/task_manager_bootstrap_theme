@@ -62,7 +62,7 @@
         
             <% i = i + 1 %>
 
-            <% if acc.teams[0].id == current_user.teams[0].id %>
+            <% if (acc.teams != []) && (acc.teams[0].id == current_user.teams[0].id) %>
 
                 <tr>
                     
