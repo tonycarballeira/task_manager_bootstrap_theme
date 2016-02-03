@@ -9,7 +9,7 @@ class TasksController < ApplicationController
 		@task = Task.new(task_params)
 
 		if @task.save	
-			redirect_to manager_tasks_path, :notice => "New Task Assigned!"
+			redirect_to tasks_path, :notice => "New Task Assigned!"
 		else
 			render "new"
 		end
@@ -23,10 +23,18 @@ class TasksController < ApplicationController
     	@task = Task.find(params[:id])
  
     	if @task.update(task_params)
-      		redirect_to manager_tasks_path, :notice => "Task Updated!"
+      		redirect_to tasks_path, :notice => "Task Updated!"
     	else
       		render 'edit'
     	end
+  	end
+
+  	def index
+  		unless current_user && current_user.access < 3
+  			redirect_to root_url, :notice => "You are not a Manager!"
+  		end
+
+    	@tasks = Task.all
   	end
 
 

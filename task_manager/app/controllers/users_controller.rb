@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
 		if @user.save
 			if current_user.access < 3
-				redirect_to accounts_path, :notice => "New Account Created!"
+				redirect_to users_path, :notice => "New Account Created!"
 			else
 				redirect_to root_url, :notice => "Signed up!"
 			end
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     	@user = User.find(params[:id])
  
     	if @user.update(user_params)
-      		redirect_to accounts_path, :notice => "Account Updated!"
+      		redirect_to users_path, :notice => "Account Updated!"
     	else
       		render 'edit'
     	end
@@ -42,7 +42,15 @@ class UsersController < ApplicationController
   		@user = User.find(params[:id])
   		@user.destroy
  
-  		redirect_to accounts_path, :notice => "Account deleted!"
+  		redirect_to users_path, :notice => "Account deleted!"
+	end
+
+	def index
+		unless current_user && current_user.access < 3
+  			redirect_to root_url, :notice => "You are not a Manager!"
+  		end
+  		
+  		@accounts = User.all
 	end
 
 	def activate
@@ -50,7 +58,7 @@ class UsersController < ApplicationController
 
 		@user.update_attributes(:active => true)
 
-		redirect_to accounts_path, :notice => "Account Activated!"
+		redirect_to users_path, :notice => "Account Activated!"
 	end
 
 	def suspend
@@ -58,7 +66,7 @@ class UsersController < ApplicationController
 
 		@user.update_attributes(:active => false)
 
-		redirect_to accounts_path, :notice => "Account Suspended!"
+		redirect_to users_path, :notice => "Account Suspended!"
 	end
 
 	private

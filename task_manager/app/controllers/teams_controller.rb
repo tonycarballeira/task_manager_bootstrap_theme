@@ -8,7 +8,7 @@ class TeamsController < ApplicationController
 		@team = Team.new(team_params)
 
 		if @team.save			
-			redirect_to accounts_path, :notice => "New Team Created!"
+			redirect_to users_path, :notice => "New Team Created!"
 		else
 			render "new"
 		end

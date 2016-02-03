@@ -1,15 +1,23 @@
 <% if current_user %>
 
-	<% if current_user.access < 3 %>
+	<% if current_user.access == 1 %>
 
+		<h2>Super Manager Dash</h2>
+
+		<ul>
+			<li><%= link_to "Accounts", users_path %></li>
+			<li><%= link_to "Tasks", tasks_path %></li>
+			<li><%= link_to "Teams", teams_path %></li>
+		</ul>
+
+	<% elsif current_user.access == 2 %>
+		
 		<h2>Manager Dash</h2>
 
 		<ul>
-			<li><%= link_to "Accounts", accounts_path %></li>
-			<li><%= link_to "Tasks", manager_tasks_path %></li>
-			<li><%= link_to "Teams", teams_path %></li>
+			<li><%= link_to "Accounts", users_path %></li>
+			<li><%= link_to "Tasks", tasks_path %></li>
 		</ul>
-		
 		
 
 	<% else %>
