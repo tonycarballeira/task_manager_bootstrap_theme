@@ -1,0 +1,93 @@
+<h2>Manage Tasks</h2>
+
+</br>
+
+<p><%= link_to "Assign New Task", new_task_path %></p>
+
+<table>
+
+	<tr>
+			
+			<td>
+				
+			</td>
+
+        	<td>
+        		Title
+        	</td>
+
+			<td>
+        		Staffer
+			</td>
+
+			<td>
+        		Manager
+			</td>
+
+		</tr>
+
+	<% i=0 %>
+
+	<% if current_user.access == 1 %>
+
+		<% @tasks.each do |task| %>
+		
+			<% i = i + 1 %>
+			<% staffer = User.find(task.user_id) %>
+			<% manager = User.find(task.manager_id) %>
+
+			<tr>
+				
+				<td>
+					<%= "#{i} - " %>
+				</td>
+
+	        	<td>
+	        		<%= task.title %>
+	        	</td>
+
+	        	<td>
+	        		<%= staffer.email %>
+				</td>
+
+				<td>
+	        		<%= manager.email %>
+				</td>
+
+			</tr>
+
+		<% end %>
+
+	<% else %>
+
+		<% @restricted_tasks.each do |task| %>
+		
+			<% i = i + 1 %>
+			<% staffer = User.find(task.user_id) %>
+			<% manager = User.find(task.manager_id) %>
+
+			<tr>
+				
+				<td>
+					<%= "#{i} - " %>
+				</td>
+
+	        	<td>
+	        		<%= task.title %>
+	        	</td>
+
+	        	<td>
+	        		<%= staffer.email %>
+				</td>
+
+				<td>
+	        		<%= manager.email %>
+				</td>
+
+			</tr>
+
+		<% end %>
+
+	<% end %>
+
+</table>
