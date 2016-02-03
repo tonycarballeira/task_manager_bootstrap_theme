@@ -8,6 +8,30 @@
 </head>
 <body>
 
+  <nav class="navbar navbar-default navbar-fixed-top">
+   
+    <div class="container-fulid">
+
+      <div class="navbar-header">
+
+       <%= link_to "Task Manager", root_path, class:"navbar-brand" %>
+
+      </div>
+
+      <ul class="nav navbar-nav">
+        <% if current_user.access == 1 %>
+          <li><%= link_to "Accounts", users_path %></li>
+          <li><%= link_to "Tasks", tasks_path %></li>
+          <li><%= link_to "Teams", teams_path %></li>
+        <% elsif %>
+          <li><%= link_to "Tasks", tasks_path %></li>
+          <li><%= link_to "Teams", teams_path %></li>
+        <% end %>
+      </ul>
+
+    </div>
+  </nav>
+
 	<div id="user_nav">
   		<% if current_user %>
     		Logged in as <%= current_user.email %>.
