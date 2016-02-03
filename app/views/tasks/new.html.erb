@@ -1,32 +1,4 @@
-<% users = User.where(:access => 3) %>
+<h1>Create Task</h1>
 
-<%= form_for @task do |f| %>
-	<% if @task.errors.any? %>
-		<div class="error_messages">
-			<h2>Form is invalid</h2>
-			<ul>
-				<% for message in @task.errors.full_messages %>
-					<li><%= message %></li>
-				<% end %>
-			</ul>
-		</div>
-	<% end %>
 
-	<p>
-		<%= f.label :title %><br />
-		<%= f.text_field :title %>
-	</p>
-
-	<p>
-		<%= f.label :body %><br />
-		<%= f.text_area :body %>
-	</p>
-
-	<%= f.label :user_id, "Staffer to assign task to." %><br />
-	<%= f.collection_select :user_id, users.order(:email),:id,:email, include_blank: true %>
-
-	<%= f.hidden_field :manager_id, :value => current_user.id %>
-
-	<p class="button"><%= f.submit %></p>
-	
-<% end %>
+<%= render partial: "new" %>
