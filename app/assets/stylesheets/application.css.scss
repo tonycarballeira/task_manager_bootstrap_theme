@@ -21,3 +21,19 @@
 body {
     padding-top: 50px; 
 }
+
+.nav_pad {
+	padding-right: 20px;
+}
+
+.alert {
+	position: absolute;
+	z-index: 1;
+	left: 35%;
+	right: 35%;
+	width: 30%;
+}
+
+.alert-info {
+	opacity: 0.5%;
+}
