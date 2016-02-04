@@ -1,4 +1,7 @@
 class TeamsController < ApplicationController
+
+	before_filter :users
+
 	def new
 		@team = Team.new
 	end
@@ -37,5 +40,11 @@ class TeamsController < ApplicationController
   	## Strong Parameters 
 	def team_params
     	params.require(:team).permit(:name)
+  	end
+
+  	def users
+  		unless current_user && current_user.access == 1
+  			redirect_to root_path
+  		end
   	end
 end

@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+	before_filter :users
+
 	def new
 		
 		if current_user && current_user.access < 3
@@ -77,6 +79,12 @@ class UsersController < ApplicationController
   	## Strong Parameters 
 	def user_params
     	params.require(:user).permit(:email, :password, :password_confirmation, :manager, :access, memberships_attributes: [:id, :team_id, :user_id])
+  	end
+
+  	def users
+  		unless current_user && current_user.access < 3
+  			redirect_to root_path
+  		end
   	end
 
 end
