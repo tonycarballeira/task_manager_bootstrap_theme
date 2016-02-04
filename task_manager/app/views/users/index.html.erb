@@ -1,9 +1,11 @@
 <% level = { 1 => 'SuperManager', 2 => 'Manager', 3 => 'Staffer' } %>
 
-
 <div class="container">
+
   <h2>Accounts</h2>
-  <p><%= link_to "Add new Account", sign_up_path %></p>            
+
+  <p><%= link_to "Add new Account", sign_up_path %></p> 
+             
   <table class="table table-hover">
     <thead>
       <tr>
@@ -28,7 +30,7 @@
             <tr>
                 
                 <td>
-                    <%= "#{i} - " %>
+                    <%= "#{i}" %>
                 </td>
 
                 <td>

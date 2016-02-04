@@ -1,20 +1,43 @@
-<%= form_for @team do |f| %>
-	<% if @team.errors.any? %>
-		<div class="error_messages">
-			<h2>Form is invalid</h2>
-			<ul>
-				<% for message in @team.errors.full_messages %>
-					<li><%= message %></li>
+<div class="row-fluid">
+	<div class="col-md-4 well center">
+
+		<%= form_for @team, :html => {:class => "form-horizontal"} do |f| %>
+			<% if @team.errors.any? %>
+				<div class="error_messages">
+					<h2>Form is invalid</h2>
+					<ul>
+						<% for message in @team.errors.full_messages %>
+							<li><%= message %></li>
+						<% end %>
+					</ul>
+				</div>
+			<% end %>
+
+			<fieldset>
+
+				<% if @team.persisted? %>
+					<legend>Edit Team</legend>
+				<% else%>
+					<legend>Create Team</legend>
 				<% end %>
-			</ul>
-		</div>
-	<% end %>
 
-	<p>
-		<%= f.label :name %><br />
-		<%= f.text_field :name %>
-	</p>
+				<div class="control-group">	
 
-	<p class="button"><%= f.submit %></p>
-	
-<% end %>
+					<%= f.label :name %><br />
+
+					<div class="controls">
+						<%= f.text_field :name %>
+					</div>
+
+				</div>
+
+				<div class="form-actions sub">
+					<%= f.submit :class => "btn btn-primary" %>
+				</div>
+
+			</fieldset>
+
+		<% end %>
+
+	</div>
+</div>

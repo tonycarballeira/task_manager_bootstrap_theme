@@ -1,110 +1,100 @@
-<h2>Manage Tasks</h2>
+<div class="container">
 
-</br>
+<h2>Manage Tasks</h2>
 
 <p><%= link_to "Assign New Task", new_task_path %></p>
 
-<table>
-
-	<tr>
-			
-			<td>
-				
-			</td>
-
-        	<td>
-        		Title
-        	</td>
-
-			<td>
-        		Staffer
-			</td>
-
-			<td>
-        		Manager
-			</td>
-
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>#</th>
+	        <th>Title</th>
+	        <th>Staffer</th>
+	        <th>Manager</th>
+	        <th></th>
+	        <th></th>
 		</tr>
+	</thead>
 
 	<% i=0 %>
+	<tbody>
+		<% if current_user.access == 1 %>
 
-	<% if current_user.access == 1 %>
+			<% @tasks.each do |task| %>
+			
+				<% i = i + 1 %>
+				<% staffer = User.find(task.user_id) %>
+				<% manager = User.find(task.manager_id) %>
 
-		<% @tasks.each do |task| %>
-		
-			<% i = i + 1 %>
-			<% staffer = User.find(task.user_id) %>
-			<% manager = User.find(task.manager_id) %>
+				<tr>
+					
+					<td>
+						<%= "#{i}" %>
+					</td>
 
-			<tr>
-				
-				<td>
-					<%= "#{i} - " %>
-				</td>
+		        	<td>
+		        		<%= task.title %>
+		        	</td>
 
-	        	<td>
-	        		<%= task.title %>
-	        	</td>
+		        	<td>
+		        		<%= staffer.email %>
+					</td>
 
-	        	<td>
-	        		<%= staffer.email %>
-				</td>
+					<td>
+		        		<%= manager.email %>
+					</td>
 
-				<td>
-	        		<%= manager.email %>
-				</td>
+					<td>
+						<%= link_to 'Edit', edit_task_path(task) %>
+					</td>
 
-				<td>
-					<%= link_to 'Edit', edit_task_path(task) %>
-				</td>
+					<td>
+						<%= link_to 'Destroy', task_path(task), method: :delete, data: { confirm: 'Are you sure?' } %>
+					</td>
 
-				<td>
-					<%= link_to 'Destroy', task_path(task), method: :delete, data: { confirm: 'Are you sure?' } %>
-				</td>
+				</tr>
 
-			</tr>
+			<% end %>
+
+		<% else %>
+
+			<% @restricted_tasks.each do |task| %>
+			
+				<% i = i + 1 %>
+				<% staffer = User.find(task.user_id) %>
+				<% manager = User.find(task.manager_id) %>
+
+				<tr>
+					
+					<td>
+						<%= "#{i} - " %>
+					</td>
+
+		        	<td>
+		        		<%= task.title %>
+		        	</td>
+
+		        	<td>
+		        		<%= staffer.email %>
+					</td>
+
+					<td>
+		        		<%= manager.email %>
+					</td>
+
+					<td>
+						<%= link_to 'Edit', edit_task_path(task) %>
+					</td>
+
+					<td>
+						<%= link_to 'Destroy', task_path(task), method: :delete, data: { confirm: 'Are you sure?' } %>
+					</td>
+
+
+				</tr>
+
+			<% end %>
 
 		<% end %>
-
-	<% else %>
-
-		<% @restricted_tasks.each do |task| %>
-		
-			<% i = i + 1 %>
-			<% staffer = User.find(task.user_id) %>
-			<% manager = User.find(task.manager_id) %>
-
-			<tr>
-				
-				<td>
-					<%= "#{i} - " %>
-				</td>
-
-	        	<td>
-	        		<%= task.title %>
-	        	</td>
-
-	        	<td>
-	        		<%= staffer.email %>
-				</td>
-
-				<td>
-	        		<%= manager.email %>
-				</td>
-
-				<td>
-					<%= link_to 'Edit', edit_task_path(task) %>
-				</td>
-
-				<td>
-					<%= link_to 'Destroy', task_path(task), method: :delete, data: { confirm: 'Are you sure?' } %>
-				</td>
-
-
-			</tr>
-
-		<% end %>
-
-	<% end %>
-
+	</tbody>
 </table>
