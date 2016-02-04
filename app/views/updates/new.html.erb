@@ -1,30 +1,52 @@
-<h2>Create Update</h2>
+<div class="row-fluid">
+	<div class="col-md-4 well center">
 
-<%= form_for @update do |f| %>
-	<% if @update.errors.any? %>
-		<div class="error_messages">
-			<h2>Form is invalid</h2>
-			<ul>
-				<% for message in @update.errors.full_messages %>
-					<li><%= message %></li>
-				<% end %>
-			</ul>
-		</div>
-	<% end %>
+		<%= form_for @update, :html => {:class => "form-horizontal"} do |f| %>
+			<% if @update.errors.any? %>
+				<div class="error_messages">
+					<h2>Form is invalid</h2>
+					<ul>
+						<% for message in @update.errors.full_messages %>
+							<li><%= message %></li>
+						<% end %>
+					</ul>
+				</div>
+			<% end %>
 
-	<p>
-		<%= f.label :title %><br />
-		<%= f.text_field :title %>
-	</p>
+			<fieldset>
 
-	<p>
-		<%= f.label :body %><br />
-		<%= f.text_area :body %>
-	</p>
+				<legend>Create Update</legend>
 
-	<%= f.hidden_field :task_id, :value => @task_id %>
-	<%= f.hidden_field :user_id, :value => current_user.id %>
+				<div class="control-group">	
 
-	<p class="button"><%= f.submit %></p>
-	
-<% end %>
+					<%= f.label :title %><br />
+
+					<div class="controls">
+						<%= f.text_field :title, :class => 'form-control' %>
+					</div>
+
+				</div>
+
+				<div class="control-group">	
+
+					<%= f.label :body %><br />
+
+					<div class="controls">
+						<%= f.text_field :body, :class => 'form-control' %>
+					</div>
+					
+				</div>
+
+				<%= f.hidden_field :task_id, :value => @task_id %>
+				<%= f.hidden_field :user_id, :value => current_user.id %>
+
+				<div class="form-actions sub">
+					<%= f.submit :class => "btn btn-primary" %>
+				</div>
+
+		</fieldset>
+			
+		<% end %>
+
+	</div>
+</div>

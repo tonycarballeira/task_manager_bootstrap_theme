@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
 
 	def new
-		@user = User.new
-
-		if current_user.access < 3
+		
+		if current_user && current_user.access < 3
+			@user = User.new
 			@user.memberships.build
+		else
+			redirect_to root_url
 		end
 	end
 

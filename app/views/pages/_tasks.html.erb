@@ -1,6 +1,6 @@
 <div class="container">
 
-<h2>Manage Tasks</h2>
+<h2>Tasks</h2>
 
 <table class="table table-hover">
 	<thead>
@@ -42,11 +42,7 @@
 				</td>
 
 				<td>
-					<%= link_to 'Edit', edit_task_path(task) %>
-				</td>
-
-				<td>
-					<%= link_to 'Destroy', task_path(task), method: :delete, data: { confirm: 'Are you sure?' } %>
+					<%= link_to "View", task_path(task) %>
 				</td>
 
 			</tr>
