@@ -26,9 +26,11 @@
             <li><%= link_to "Accounts", users_path %></li>
             <li><%= link_to "Tasks", tasks_path %></li>
             <li><%= link_to "Teams", teams_path %></li>
-          <% elsif %>
+          <% elsif current_user && current_user.access == 2 %>
             <li><%= link_to "Tasks", tasks_path %></li>
             <li><%= link_to "Teams", teams_path %></li>
+          <% else %>
+  
           <% end %>
         </ul>
 
