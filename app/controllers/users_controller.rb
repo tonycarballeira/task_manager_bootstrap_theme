@@ -3,13 +3,8 @@ class UsersController < ApplicationController
 	before_filter :users
 
 	def new
-		
-		if current_user && current_user.access < 3
-			@user = User.new
-			@user.memberships.build
-		else
-			redirect_to root_url
-		end
+		@user = User.new
+		@user.memberships.build	
 	end
 
 	def create
@@ -17,11 +12,7 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 
 		if @user.save
-			if current_user.access < 3
-				redirect_to users_path, :notice => "New Account Created!"
-			else
-				redirect_to root_url, :notice => "Signed up!"
-			end
+			redirect_to users_path, :notice => "New Account Created!"
 		else
 			render "new"
 		end
@@ -50,12 +41,11 @@ class UsersController < ApplicationController
 	end
 
 	def index
-		unless current_user && current_user.access < 3
-  			redirect_to root_url, :notice => "You are not a Manager!"
+		if current_user == 1	
+  			@accounts = User.all
+		else
+  			@staffers = User.where(:access => 3)
   		end
-  		
-  		@accounts = User.all
-  		@staffers = User.where(:access => 3)
 	end
 
 	def activate
