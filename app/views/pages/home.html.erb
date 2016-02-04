@@ -14,14 +14,16 @@
 		</div>
 
 	<% elsif current_user.access == 2 %>
-		
-		<h2>Manager Dash</h2>
 
-		<ul>
-			<li><%= link_to "Accounts", users_path %></li>
-			<li><%= link_to "Tasks", tasks_path %></li>
-		</ul>
-		
+		<div class='container well center'>
+
+			<legend>Manager Dash</legend>
+
+			<div class='row'>
+				<div class='col-md-4'><%= link_to "Accounts", users_path %></div>
+				<div class='col-md-4'><%= link_to "Tasks", tasks_path %></div>
+			</div>
+		</div>		
 
 	<% else %>
 
