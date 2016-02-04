@@ -1,19 +1,37 @@
-<h1>Log in</h1>
+<div class="row-fluid">
+	<div class="col-md-4 well center">
 
-<!-- form_tag instead of form for because there is no specific resource we are creating -->
+		<!-- form_tag instead of form for because there is no specific resource we are creating -->
 
-<%= form_tag sessions_path do %>
+		<%= form_tag sessions_path, :html => {:class => "form-horizontal"} do %>
 
-  <p>
-    <%= label_tag :email %><br />
-    <%= text_field_tag :email, params[:email] %>
-  </p>
+			<legend>Log In</legend>
 
-  <p>
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
-  </p>
+			<div class="control-group">	
 
-  <p class="button"><%= submit_tag "Log in" %></p>
-  
-<% end %>
+				<%= label_tag :email %><br />
+
+				<div class="controls">
+					<%= text_field_tag :email, params[:email] %>
+				</div>
+
+			</div>
+
+			<div class="control-group">	
+
+		    	<%= label_tag :password %><br />
+
+		    	<div class="controls">
+		    		<%= password_field_tag :password %>
+	    		</div>
+
+		  	</div>
+		  	
+		  	<div class="form-actions sub">
+		  		<%= submit_tag "Log in", :class => "btn btn-primary" %>
+	  		</div>
+		  
+		<% end %>
+
+	</div>
+</div>

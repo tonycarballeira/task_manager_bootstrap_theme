@@ -2,13 +2,16 @@
 
 	<% if current_user.access == 1 %>
 
-		<h2>Super Manager Dash</h2>
+		<div class='container well center'>
 
-		<ul>
-			<li><%= link_to "Accounts", users_path %></li>
-			<li><%= link_to "Tasks", tasks_path %></li>
-			<li><%= link_to "Teams", teams_path %></li>
-		</ul>
+			<legend>Super Manager Dash</legend>
+
+			<div class='row'>
+				<div class='col-md-4'><%= link_to "Accounts", users_path %></div>
+				<div class='col-md-4'><%= link_to "Tasks", tasks_path %></div>
+				<div class='col-md-4'><%= link_to "Teams", teams_path %></div>
+			</div>
+		</div>
 
 	<% elsif current_user.access == 2 %>
 		
