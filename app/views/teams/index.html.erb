@@ -1,31 +1,46 @@
-<h2>Teams</h2>
+<div class="container">
 
-<li><%= link_to "Add new Team", new_team_path %></li>
+	<h2>Teams</h2>
 
-<table>
+	<%= link_to "Add new Team", new_team_path %>
 
-	<% i=0 %>
+	<table class="table table-hover">
 
-	<% @teams.each do |team| %>
-	
-		<% i = i + 1 %>
+		<thead>
+			<tr>
+				<th>#</th>
+		        <th>Team</th>
+		        <th></th>
+		        <th></th>
+			</tr>
+		</thead>
 
-		<tr>
+		<% i=0 %>
+		<tbody>
+
+			<% @teams.each do |team| %>
 			
-			<td>
-				<%= "#{i} - " %>
-			</td>
+				<% i = i + 1 %>
 
-        	<td>
-        		<%= team.name %>
-        	</td>
+				<tr>
+					
+					<td>
+						<%= "#{i}" %>
+					</td>
 
-        	<td><%= link_to 'Edit', edit_team_path(team) %></td>
+		        	<td>
+		        		<%= team.name %>
+		        	</td>
 
-        	<td><%= link_to 'Destroy', team_path(team), method: :delete,data: { confirm: 'Are you sure?' } %></td>
+		        	<td><%= link_to 'Edit', edit_team_path(team) %></td>
 
-		</tr>
+		        	<td><%= link_to 'Destroy', team_path(team), method: :delete,data: { confirm: 'Are you sure?' } %></td>
 
-	<% end %>
+				</tr>
 
-</table>
+			<% end %>
+
+		</tbody>
+
+	</table>
+</div>

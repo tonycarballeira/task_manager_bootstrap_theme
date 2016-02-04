@@ -1,32 +1,59 @@
 <% users = User.where(:access => 3) %>
 
-<%= form_for @task do |f| %>
-	<% if @task.errors.any? %>
-		<div class="error_messages">
-			<h2>Form is invalid</h2>
-			<ul>
-				<% for message in @task.errors.full_messages %>
-					<li><%= message %></li>
+<div class="row-fluid">
+	<div class="col-md-4 well center">	
+
+		<%= form_for @task, :html => {:class => "form-horizontal"} do |f| %>
+			<% if @task.errors.any? %>
+				<div class="error_messages">
+					<h2>Form is invalid</h2>
+					<ul>
+						<% for message in @task.errors.full_messages %>
+							<li><%= message %></li>
+						<% end %>
+					</ul>
+				</div>
+			<% end %>
+
+			<fieldset>
+
+				<% if @task.persisted? %>
+					<legend>Edit Task</legend>
+				<% else%>
+					<legend>Create Task</legend>
 				<% end %>
-			</ul>
-		</div>
-	<% end %>
 
-	<p>
-		<%= f.label :title %><br />
-		<%= f.text_field :title %>
-	</p>
+				<div class="control-group">	
 
-	<p>
-		<%= f.label :body %><br />
-		<%= f.text_area :body %>
-	</p>
+					<%= f.label :title %><br />
 
-	<%= f.label :user_id, "Staffer to assign task to." %><br />
-	<%= f.collection_select :user_id, users.order(:email),:id,:email, include_blank: true %>
+					<div class="controls">
+						<%= f.text_field :title %>
+					</div>
 
-	<%= f.hidden_field :manager_id, :value => current_user.id %>
+				</div>
 
-	<p class="button"><%= f.submit %></p>
-	
-<% end %>
+				<div class="control-group">	
+
+					<%= f.label :body %><br />
+
+					<div class="controls">
+						<%= f.text_field :body %>
+					</div>
+					
+				</div>
+
+				<%= f.label :user_id, "Staffer to assign task to." %><br />
+				<%= f.collection_select :user_id, users.order(:email),:id,:email, include_blank: true %>
+
+				<%= f.hidden_field :manager_id, :value => current_user.id %>
+
+				<div class="form-actions sub">
+					<%= f.submit :class => "btn btn-primary" %>
+				</div>
+
+			</fieldset>
+		<% end %>
+
+	</div>
+</div>
