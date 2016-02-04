@@ -1,64 +1,103 @@
-<%= form_for @user do |f| %>
-	<% if @user.errors.any? %>
-		<div class="error_messages">
-			<h2>Form is invalid</h2>
-			<ul>
-				<% for message in @user.errors.full_messages %>
-					<li><%= message %></li>
+<div class="row-fluid">
+	<div class="col-md-4 well center">	
+
+	  	<%= form_for @user, :html => {:class => "form-horizontal"} do |f| %>
+			<% if @user.errors.any? %>
+				<div class="error_messages">
+					<h2>Form is invalid</h2>
+					<ul>
+						<% for message in @user.errors.full_messages %>
+							<li><%= message %></li>
+						<% end %>
+					</ul>
+				</div>
+			<% end %>
+
+			<fieldset>
+
+				<% if @user.persisted? %>
+					<legend>Edit Account</legend>
+				<% else%>
+					<legend>Create Account</legend>
 				<% end %>
-			</ul>
-		</div>
-	<% end %>
 
-	<p>
-		<%= f.label :email %><br />
-		<%= f.text_field :email %>
-	</p>
+				<div class="control-group">			
 
-	<p>
-		<%= f.label :password %><br />
-		<%= f.password_field :password %>
-	</p>
+					<%= f.label :email %>
 
-	<p>
-		<%= f.label :password_confirmation %><br />
-		<%= f.password_field :password_confirmation %>
-	</p>
+					<div class="controls">
+						<%= f.text_field :email, :class => 'form-control' %>
+					</div>
+					
+				</div>
 
-	<% if current_user && current_user.access == 1 %>
-		<p>
-			<%= f.label(:access, "User Access Level") %><br />
-			<select name="user[access]">
-				<option></option>
-		  		<option value="1">SuperManager</option>
-	  			<option value="2">Manager</option>
-  				<option value="3">Staffer</option>
-			</select> 
-		</p>
+				<div class="control-group">	
 
-		<%= f.fields_for :memberships do |b| %>
+					<%= f.label :password %>
 
-    		<%= b.label :team_id, "Assign account to a team." %><br />
-			<%= b.collection_select :team_id, Team.order(:id),:id,:name, include_blank: true %>
+					<div class="controls">
+						<%= f.password_field :password, :class => 'form-control' %>
+					</div>
+				</div>
 
-  		<% end %>
+				<div class="control-group">	
 
-	<% else %>
+					<%= f.label :password_confirmation %>
 
-		<%puts "caca"%>
-		<%puts current_user.teams[0].id%>
+					<div class="controls">
+						<%= f.password_field :password_confirmation, :class => 'form-control' %>
+					</div>
+				</div>
 
-		<%= f.fields_for :memberships do |b| %>
+				<% if current_user && current_user.access == 1 %>
+					<div class="control-group">	
 
-			<%= b.hidden_field :team_id, :value => current_user.teams[0].id %>
+						<%= f.label(:access, "User Access Level") %><br />
 
-  		<% end %>
+						<select name="user[access]" class="controls">
+							<option></option>
+					  		<option value="1">SuperManager</option>
+				  			<option value="2">Manager</option>
+			  				<option value="3">Staffer</option>
+						</select> 
 
-		<%= f.hidden_field :access, :value => 3 %>
+					</div>
 
-		
-	<% end %>
+					<%= f.fields_for :memberships do |b| %>
 
-	<p class="button"><%= f.submit %></p>
-	
-<% end %>
+						<div class="control-group">	
+
+				    		<%= b.label :team_id, "Assign account to a team." %><br />
+
+				    		<div class="controls">
+								<%= b.collection_select :team_id, Team.order(:id),:id,:name, include_blank: true %>
+							</div>
+
+						</div>
+
+			  		<% end %>
+
+				<% else %>
+
+					<%= f.fields_for :memberships do |b| %>
+
+						<%= b.hidden_field :team_id, :value => current_user.teams[0].id %>
+
+			  		<% end %>
+
+					<%= f.hidden_field :access, :value => 3 %>
+
+					
+				<% end %>
+
+
+				<div class="form-actions sub">
+					<%= f.submit :class => "btn btn-primary" %>
+				</div>
+
+			</fieldset>
+
+		<% end %>
+
+	</div>
+</div>

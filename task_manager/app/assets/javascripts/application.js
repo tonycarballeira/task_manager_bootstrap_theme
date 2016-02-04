@@ -19,9 +19,21 @@
 
 
 
-$(document).ready(function(){
-  setTimeout(function(){
-    $('.alert').fadeOut( "slow");
-  }, 2000);
- })
+// $(document).ready(function(){
+//   setTimeout(function(){
+//     $(".alert").fadeOut( "slow");
+//   }, 2000);
+//  });
+
+// $(document).ready(function(){
+// 	$( ".alert" ).click(function() {
+// 	  $(".alert").fadeOut( "fast");
+// 	});
+// });
  
+// (function(){
+// 	setTimeout(function(){
+//     	$(".alert").fadeOut( "slow");
+//   	}, 2000);
+// }());
+
