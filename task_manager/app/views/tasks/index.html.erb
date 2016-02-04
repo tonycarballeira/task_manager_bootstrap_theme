@@ -18,83 +18,42 @@
 
 	<% i=0 %>
 	<tbody>
-		<% if current_user.access == 1 %>
 
-			<% @tasks.each do |task| %>
-			
-				<% i = i + 1 %>
-				<% staffer = User.find(task.user_id) %>
-				<% manager = User.find(task.manager_id) %>
+		<% @tasks.each do |task| %>
+		
+			<% i = i + 1 %>
+			<% staffer = User.find(task.user_id) %>
+			<% manager = User.find(task.manager_id) %>
 
-				<tr>
-					
-					<td>
-						<%= "#{i}" %>
-					</td>
+			<tr>
+				
+				<td>
+					<%= "#{i}" %>
+				</td>
 
-		        	<td>
-		        		<%= task.title %>
-		        	</td>
+	        	<td>
+	        		<%= task.title %>
+	        	</td>
 
-		        	<td>
-		        		<%= staffer.email %>
-					</td>
+	        	<td>
+	        		<%= staffer.email %>
+				</td>
 
-					<td>
-		        		<%= manager.email %>
-					</td>
+				<td>
+	        		<%= manager.email %>
+				</td>
 
-					<td>
-						<%= link_to 'Edit', edit_task_path(task) %>
-					</td>
+				<td>
+					<%= link_to 'Edit', edit_task_path(task) %>
+				</td>
 
-					<td>
-						<%= link_to 'Destroy', task_path(task), method: :delete, data: { confirm: 'Are you sure?' } %>
-					</td>
+				<td>
+					<%= link_to 'Destroy', task_path(task), method: :delete, data: { confirm: 'Are you sure?' } %>
+				</td>
 
-				</tr>
-
-			<% end %>
-
-		<% else %>
-
-			<% @restricted_tasks.each do |task| %>
-			
-				<% i = i + 1 %>
-				<% staffer = User.find(task.user_id) %>
-				<% manager = User.find(task.manager_id) %>
-
-				<tr>
-					
-					<td>
-						<%= "#{i} - " %>
-					</td>
-
-		        	<td>
-		        		<%= task.title %>
-		        	</td>
-
-		        	<td>
-		        		<%= staffer.email %>
-					</td>
-
-					<td>
-		        		<%= manager.email %>
-					</td>
-
-					<td>
-						<%= link_to 'Edit', edit_task_path(task) %>
-					</td>
-
-					<td>
-						<%= link_to 'Destroy', task_path(task), method: :delete, data: { confirm: 'Are you sure?' } %>
-					</td>
-
-
-				</tr>
-
-			<% end %>
+			</tr>
 
 		<% end %>
+		
 	</tbody>
 </table>

@@ -29,25 +29,30 @@ class TasksController < ApplicationController
   	end
 	end
 
-	def index
-		unless current_user && current_user.access < 3
-			redirect_to root_url, :notice => "You are not a Manager!"
-		end
+  def index
 
-  	@tasks = Task.all
+    if current_user.access == 1
 
-    if current_user.access == 2
+      @tasks = Task.all
 
-      @restricted_tasks = []
+    elsif current_user.access == 2
+
+      @tasks = []
 
       Task.all.each do |x|
         manager = User.where(:id => x.manager_id)[0]
 
         if (manager.teams != []) && (manager.teams[0].id == current_user.teams[0].id)
-          @restricted_tasks << x
+          @tasks << x
         end
       end
+
+    else
+
+      @tasks = Task.where(:user_id => current_user.id)
+      
     end
+
   end
 
   def show
