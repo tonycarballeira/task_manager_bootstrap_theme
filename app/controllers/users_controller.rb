@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-	before_filter :users
+	before_filter :user_restrict
 
 	def new
 		@user = User.new
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 	end
 
 	def index
-		if current_user == 1	
+		if current_user.access == 1	
   			@accounts = User.all
 		else
   			@staffers = User.where(:access => 3)
@@ -71,7 +71,7 @@ class UsersController < ApplicationController
     	params.require(:user).permit(:email, :password, :password_confirmation, :manager, :access, memberships_attributes: [:id, :team_id, :user_id])
   	end
 
-  	def users
+  	def user_restrict
   		unless current_user && current_user.access < 3
   			redirect_to root_path
   		end

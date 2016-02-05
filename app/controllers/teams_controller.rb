@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
 
-	before_filter :users
+	before_filter :user_restrict
 
 	def new
 		@team = Team.new
@@ -42,7 +42,7 @@ class TeamsController < ApplicationController
     	params.require(:team).permit(:name)
   	end
 
-  	def users
+  	def user_restrict
   		unless current_user && current_user.access == 1
   			redirect_to root_path
   		end

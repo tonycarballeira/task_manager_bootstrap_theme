@@ -1,0 +1,5 @@
+<%= fields_for @task.user_id do |id_fields| %>
+	<%= id_fields.label :user_id, "Staffer to assign task to." %><br />
+	<%= id_fields.collection_select :user_id, users, :id, :email, include_blank: true %> 
+<% end %>
+
