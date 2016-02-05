@@ -16,25 +16,25 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-$(document).ready(function(){
-	$('.team_select').change(function(){
-		var value = $('.team_select').val();
-		console.log("java")
+// $(document).ready(function(){
+// 	$('.team_select').change(function(){
+// 		var value = $('.team_select').val();
+// 		console.log("java")
 		
-		if(value){
+// 		if(value){
 			
-			jQuery.ajax({
+// 			jQuery.ajax({
 
-	    		data: { team_id: value },
-	        	type: 'get',
-	      		url: "/tasks/update_users",
-	      		dataType: "script"
+// 	    		data: { team_id: value },
+// 	        	type: 'get',
+// 	      		url: "/tasks/update_users",
+// 	      		dataType: "script"
 
-    		});
-		}
+//     		});
+// 		}
 		
-	});
-});
+// 	});
+// });
 
 // $(document).ready(function(){
 // 	$( ".alert" ).click(function() {

@@ -2,13 +2,8 @@ class TasksController < ApplicationController
 
 	def new
 		@task = Task.new
-    @team_id = params[:team_id]
-
-    if @team_id
-      @users = Team.find(@team_id).users
-    else
-      @users = User.where(:access => 3)
-    end
+    
+    @users = User.where(:access => 3)   
 	end
 
   def update_users
