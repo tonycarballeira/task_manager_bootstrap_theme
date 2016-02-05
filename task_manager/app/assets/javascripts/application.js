@@ -11,42 +11,55 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks 
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
 
-// $(document).ready(function(){
-// 	$('.team_select').change(function(){
-// 		var value = $('.team_select').val();
-// 		console.log("java")
+$(document).ready(function(){
+
+	// Task Form dynamic select options for accounts
+	$('.team_select').change(function(){
+		var value = $('.team_select').val();
+		console.log("java")
 		
-// 		if(value){
+		if(value){
 			
-// 			jQuery.ajax({
+			jQuery.ajax({
 
-// 	    		data: { team_id: value },
-// 	        	type: 'get',
-// 	      		url: "/tasks/update_users",
-// 	      		dataType: "script"
+	    		data: { team_id: value },
+	        	type: 'get',
+	      		url: "/tasks/update_users",
+	      		dataType: "script"
 
-//     		});
-// 		}
+    		});
+		}
 		
-// 	});
+	});
+
+	//  Alert Box fade out
+	setTimeout(function(){
+    	$(".alert").fadeOut( "slow");
+  	}, 2000);
+
+});
+
+
+
+// $(document).ready(function(){
+// 	setTimeout(function(){
+//     	$(".alert").fadeOut( "slow");
+//   	}, 2000);
 // });
 
 // $(document).ready(function(){
 // 	$( ".alert" ).click(function() {
-// 	  $(".alert").fadeOut( "fast");
+// 	  $(".alert").fadeOut( "slow");
 // 	});
 // });
  
-// (function(){
-// 	setTimeout(function(){
-//     	$(".alert").fadeOut( "slow");
-//   	}, 2000);
-// }());
+
 
 // $(document).ready(function(){
 // 	$('.team_select').change(function(){

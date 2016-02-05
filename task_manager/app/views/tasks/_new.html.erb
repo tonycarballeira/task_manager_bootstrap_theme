@@ -43,28 +43,6 @@
 
 				<% if current_user && current_user.access == 1 %>
 
-					<script>
-						$(document).ready(function(){
-							$('.team_select').change(function(){
-								var value = $('.team_select').val();
-								console.log("java")
-								
-								if(value){
-									
-									jQuery.ajax({
-
-							    		data: { team_id: value },
-							        	type: 'get',
-							      		url: "/tasks/update_users",
-							      		dataType: "script"
-
-						    		});
-								}
-								
-							});
-						});
-					</script>
-
 					<% teams = Team.all %>
 
 					<div class="control-group">
@@ -83,7 +61,7 @@
 
 					</div>
 
-					<% puts 'hello' %><% puts @team_id %><% puts @users %>
+					
 				<% end %>
           	 	
           	 	<div class="control-group">	

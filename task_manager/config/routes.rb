@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "activate" => "users#activate", :as => "activate"
   get "suspend" => "users#suspend", :as => "suspend"
 
+  # user_update path for ajax dynamic select options in task form.
   get 'tasks/update_users' => "tasks#update_users", :as => 'update_users'
 
   resources :users
