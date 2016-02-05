@@ -13,6 +13,7 @@
 	        <th>Manager</th>
 	        <th></th>
 	        <th></th>
+	        <th></th>
 		</tr>
 	</thead>
 
@@ -41,6 +42,10 @@
 
 				<td>
 	        		<%= manager.email %>
+				</td>
+
+				<td>
+					<%= link_to 'View', task_path(task) %>
 				</td>
 
 				<td>

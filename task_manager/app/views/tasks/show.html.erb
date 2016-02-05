@@ -34,6 +34,7 @@
 				<th>#</th>
 		        <th>Title</th>
 		        <th>Body</th>
+		        <th>Staffer</th>
 		        <th>Update Time</th>
 			</tr>
 		</thead>
@@ -56,6 +57,10 @@
 
 		        	<td>
 		        		<%= x.body %>
+					</td>
+
+					<td>
+		        		<%= User.where(:id => x.user_id)[0].email %>
 					</td>
 
 					<td>

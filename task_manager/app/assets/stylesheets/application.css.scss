@@ -21,18 +21,12 @@
 // Alert div positioning  !!
 
 .alert {
-position: absolute;
-z-index: 1;
-left: 35%;
-right: 35%;
-width: 30%;
-}
-
-
-// alert div opacity
-
-.alert-info {
-opacity: 0.5%;
+	position: absolute;
+	z-index: 1;
+	left: 35%;
+	right: 35%;
+	width: 30%;
+	margin-bottom: 0;
 }
 
 
@@ -46,36 +40,36 @@ body {
 // Form div positioning  !!
 
 .center { 
-float: none; 
-margin-left: 10%; 
-margin-right: auto; 
-margin-top: 5%;
+	float: none; 
+	margin-left: 10%; 
+	margin-right: auto; 
+	margin-top: 5%;
 }
 
 
 // Form fields bottom margin  !!
 
 .control-group {
-margin-bottom: 5px;
+	margin-bottom: 5px;
 }
 
 
 // Font Awesome icon right margins  !!
 
 .fa {
-margin-right: 10px;
+	margin-right: 10px;
 }
 
 
 // Navigation header right padding  !!
 
 .nav_pad {
-padding-right: 20px;
+	padding-right: 20px;
 }
 
 
 // form submit button top margin  !!
 
 .sub {
-margin-top: 20px;
+	margin-top: 20px;
 }
