@@ -3,13 +3,8 @@
 
 		<%= form_for @team, :html => {:class => "form-horizontal"} do |f| %>
 			<% if @team.errors.any? %>
-				<div class="error_messages">
-					<h2>Form is invalid</h2>
-					<ul>
-						<% for message in @team.errors.full_messages %>
-							<li><%= message %></li>
-						<% end %>
-					</ul>
+				<div class="alert alert-info" role="alert">
+					<span><%= @team.errors.full_messages[0] %></span>
 				</div>
 			<% end %>
 
