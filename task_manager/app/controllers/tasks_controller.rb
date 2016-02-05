@@ -77,6 +77,13 @@ class TasksController < ApplicationController
     @updates = Update.where(:task_id => @task.id)
   end
 
+  def destroy
+      @task = Task.find(params[:id])
+      @task.destroy
+ 
+      redirect_to tasks_path, :notice => "Task deleted!"
+  end
+
 
 	private
   	

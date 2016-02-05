@@ -49,14 +49,22 @@
                     <%= level[acc.access]%>
                 </td>
 
-                <td><%= link_to 'Edit', edit_user_path(acc) %></td>
+                <td>
+                    <%= link_to 'Edit', edit_user_path(acc) %>
+                </td>
 
-                <td><%= link_to 'Destroy', user_path(acc), method: :delete,data: { confirm: 'Are you sure?' } %></td>
+                <td>
+                    <%= link_to 'Destroy', user_path(acc), method: :delete,data: { confirm: 'Are you sure?' } %>
+                </td>
 
                 <% if acc.active %>
-                    <td><%= link_to 'Suspend', suspend_path(acc), data: { confirm: 'Are you sure?' } %></td>
+                    <td>
+                        <%= link_to 'Suspend', suspend_path(acc), data: { confirm: 'Are you sure?' } %>
+                    </td>
                 <% else %>
-                    <td><%= link_to 'Activate', activate_path(acc), data: { confirm: 'Are you sure?' } %></td>
+                    <td>
+                        <%= link_to 'Activate', activate_path(acc), data: { confirm: 'Are you sure?' } %>
+                    </td>
                 <% end %>
 
             </tr>
@@ -95,14 +103,22 @@
                         <%= level[acc.access]%>
                     </td>
 
-                    <td><%= link_to 'Edit', edit_user_path(acc) %></td>
+                    <td>
+                        <%= link_to 'Edit', edit_user_path(acc) %>
+                    </td>
 
-                    <td><%= link_to 'Destroy', user_path(acc), method: :delete,data: { confirm: 'Are you sure?' } %></td>
+                    <td>
+                        <%= link_to 'Destroy', user_path(acc), method: :delete,data: { confirm: 'Are you sure?' } %>
+                    </td>
 
                     <% if acc.active %>
-                        <td><%= link_to 'Suspend', suspend_path(acc), data: { confirm: 'Are you sure?' } %></td>
+                        <td>
+                            <%= link_to 'Suspend', suspend_path(acc), data: { confirm: 'Are you sure?' } %>
+                        </td>
                     <% else %>
-                        <td><%= link_to 'Activate', activate_path(acc), data: { confirm: 'Are you sure?' } %></td>
+                        <td>
+                            <%= link_to 'Activate', activate_path(acc), data: { confirm: 'Are you sure?' } %>
+                        </td>
                     <% end %>
 
                 </tr>
