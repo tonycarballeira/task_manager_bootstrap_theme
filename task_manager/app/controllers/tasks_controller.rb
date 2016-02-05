@@ -2,8 +2,15 @@ class TasksController < ApplicationController
 
 	def new
 		@task = Task.new
-    
-    @users = User.where(:access => 3)   
+
+    if current_user.teams != []
+
+      team = current_user.teams[0]
+      
+      @users = team.users.where(:access => 3)
+    else
+      @users = User.all
+    end   
 	end
 
   def update_users
