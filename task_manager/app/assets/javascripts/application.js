@@ -18,13 +18,6 @@
 
 
 
-
-// $(document).ready(function(){
-//   setTimeout(function(){
-//     $(".alert").fadeOut( "slow");
-//   }, 2000);
-//  });
-
 // $(document).ready(function(){
 // 	$( ".alert" ).click(function() {
 // 	  $(".alert").fadeOut( "fast");
@@ -37,3 +30,52 @@
 //   	}, 2000);
 // }());
 
+// $(document).ready(function(){
+// 	$('.team_select').change(function(){
+// 		var value = $('.team_select').val();
+// 		console.log("java")
+		
+// 		if(value){
+
+// 			jQuery.ajax({
+
+// 	    		data: { team_id: value },
+// 	        	type: 'get',
+// 	      		url: "/tasks/new",
+
+//     		});
+// 		}
+		
+// 	});
+// });
+
+$(document).ready(function(){
+	$('.team_select').change(function(){
+		var value = $('.team_select').val();
+		console.log("java")
+		
+		if(value){
+			
+			jQuery.ajax({
+
+	    		data: { team_id: value },
+	        	type: 'get',
+	      		url: "/tasks/update_users",
+	      		dataType: "script"
+
+    		});
+		}
+		
+	});
+});
+
+// function pass_team(id){
+// 	var team_id = id.value;
+// 	console.log(team_id);
+	
+// 	jQuery.ajax({
+// 		data: { team_id: team_id },
+//     	type: 'get',
+//   		url: "/tasks/new",
+// 	)};
+// };

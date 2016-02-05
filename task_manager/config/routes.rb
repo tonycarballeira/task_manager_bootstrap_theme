@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get "activate" => "users#activate", :as => "activate"
   get "suspend" => "users#suspend", :as => "suspend"
 
+  get 'tasks/update_users' => "tasks#update_users", :as => 'update_users'
+
   resources :users
   resources :sessions
   resources :tasks

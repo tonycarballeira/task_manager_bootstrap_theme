@@ -2,7 +2,21 @@ class TasksController < ApplicationController
 
 	def new
 		@task = Task.new
+    @team_id = params[:team_id]
+
+    if @team_id
+      @users = Team.find(@team_id).users
+    else
+      @users = User.where(:access => 3)
+    end
 	end
+
+  def update_users
+    # updates users based on team selected
+    team = Team.find(params[:team_id])
+    # map to email and id for use in our options_for_select
+    @users = team.users.map{|a| [a.email, a.id]}.insert(0, "Staffer to assign task to.")
+  end
 
 	def create
 
