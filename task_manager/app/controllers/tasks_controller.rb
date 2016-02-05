@@ -7,9 +7,9 @@ class TasksController < ApplicationController
 
       team = current_user.teams[0]
       
-      @users = team.users.where(:access => 3)
+      @users = team.users.where(:access => 3).where(:active => true)
     else
-      @users = User.all
+      @users = User.where(:active => true)
     end   
 	end
 
@@ -17,7 +17,7 @@ class TasksController < ApplicationController
     # updates users based on team selected
     team = Team.find(params[:team_id])
     # map to email and id for use in our options_for_select
-    @users = team.users.where(:access => 3).map{|a| [a.email, a.id]}.insert(0, "")
+    @users = team.users.where(:access => 3).where(:active => true).map{|a| [a.email, a.id]}.insert(0, "")
   end
 
 	def create
