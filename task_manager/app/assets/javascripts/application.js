@@ -19,7 +19,7 @@
 
 $(document).ready(function(){
 
-	// Task Form dynamic select options for accounts
+	// FUNCTION: Task Form dynamic select options for accounts
 	$('.team_select').change(function(){
 		var value = $('.team_select').val();
 		console.log("java")
@@ -38,7 +38,7 @@ $(document).ready(function(){
 		
 	});
 
-	//  Alert Box fade out
+	//  FUNCTION: Alert Box fade out
 	setTimeout(function(){
     	$(".alert").fadeOut( "slow");
   	}, 2000);
@@ -47,46 +47,8 @@ $(document).ready(function(){
 
 
 
-// $(document).ready(function(){
-// 	setTimeout(function(){
-//     	$(".alert").fadeOut( "slow");
-//   	}, 2000);
-// });
 
-// $(document).ready(function(){
-// 	$( ".alert" ).click(function() {
-// 	  $(".alert").fadeOut( "slow");
-// 	});
-// });
  
 
 
-// $(document).ready(function(){
-// 	$('.team_select').change(function(){
-// 		var value = $('.team_select').val();
-// 		console.log("java")
-		
-// 		if(value){
 
-// 			jQuery.ajax({
-
-// 	    		data: { team_id: value },
-// 	        	type: 'get',
-// 	      		url: "/tasks/new",
-
-//     		});
-// 		}
-		
-// 	});
-// });
-
-// function pass_team(id){
-// 	var team_id = id.value;
-// 	console.log(team_id);
-	
-// 	jQuery.ajax({
-// 		data: { team_id: team_id },
-//     	type: 'get',
-//   		url: "/tasks/new",
-// 	)};
-// };
