@@ -15,7 +15,7 @@ class TasksController < ApplicationController
     # updates users based on team selected
     team = Team.find(params[:team_id])
     # map to email and id for use in our options_for_select
-    @users = team.users.map{|a| [a.email, a.id]}.insert(0, "Staffer to assign task to.")
+    @users = team.users.map{|a| [a.email, a.id]}.insert(0, "")
   end
 
 	def create
