@@ -9,7 +9,7 @@ class TasksController < ApplicationController
       
       @users = team.users.where(:access => 3).where(:active => true)
     else
-      @users = []
+      @users = User.where(:active => true)
     end   
 	end
 
@@ -23,7 +23,13 @@ class TasksController < ApplicationController
 	def create
 
 		@task = Task.new(task_params)
-    @users = User.where(:active => true)
+
+    if current_user.teams != []
+      team = current_user.teams[0]
+      @users = team.users.where(:access => 3).where(:active => true)
+    else
+      @users = User.where(:active => true)
+    end
 
 		if @task.save	
 			redirect_to tasks_path, :notice => "New Task Assigned!"
