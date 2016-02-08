@@ -9,7 +9,7 @@ class TasksController < ApplicationController
       
       @users = team.users.where(:access => 3).where(:active => true)
     else
-      @users = User.where(:active => true)
+      @users = []
     end   
 	end
 
