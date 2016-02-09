@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  
   def new
   end
 
@@ -20,8 +21,8 @@ class SessionsController < ApplicationController
   end
 
   private
-  ## Strong Parameters 
-	def session_params
+    ## Strong Parameters 
+  	def session_params
     	params.permit(:email, :password)
   	end
 end

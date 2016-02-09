@@ -22,23 +22,22 @@ class TeamsController < ApplicationController
 	end
 
 	def edit
-    	@team = Team.find(params[:id])
-  	end
+  	@team = Team.find(params[:id])
+	end
 
-  	def update
-    	@team = Team.find(params[:id])
- 
-    	if @team.update(team_params)
-      		redirect_to teams_path, :notice => "Account Updated!"
-    	else
-      		render 'edit'
-    	end
+	def update
+  	@team = Team.find(params[:id])
+
+  	if @team.update(team_params)
+    		redirect_to teams_path, :notice => "Account Updated!"
+  	else
+    		render 'edit'
   	end
+	end
 
 	private
-  	
   	## Strong Parameters 
-	def team_params
+  	def team_params
     	params.require(:team).permit(:name)
   	end
 
@@ -46,5 +45,5 @@ class TeamsController < ApplicationController
   		unless current_user && current_user.access == 1
   			redirect_to root_path
   		end
-  	end
+    end
 end
