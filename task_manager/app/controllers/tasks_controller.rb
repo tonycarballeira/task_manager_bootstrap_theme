@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
 
 	def new
+
 		@task = Task.new
 
     if current_user.teams != []
@@ -10,14 +11,17 @@ class TasksController < ApplicationController
       @users = team.users.where(:access => 3).where(:active => true)
     else
       @users = User.where(:active => true)
-    end   
+    end  
+
 	end
 
   def update_users
+
     # updates users based on team selected
     team = Team.find(params[:team_id])
     # map to email and id for use in our options_for_select
     @users = team.users.where(:access => 3).where(:active => true).map{|a| [a.email, a.id]}.insert(0, "")
+
   end
 
 	def create
@@ -36,20 +40,25 @@ class TasksController < ApplicationController
 		else
 			render "new"
 		end
+
 	end
 
 	def edit
+
     	@task = Task.find(params[:id])
+
 	end
 
 	def update
+
   	@task = Task.find(params[:id])
  
   	if @task.update(task_params)
     		redirect_to tasks_path, :notice => "Task Updated!"
   	else
-    		render 'edit'
+    		render "edit"
   	end
+
 	end
 
   def index
@@ -79,23 +88,29 @@ class TasksController < ApplicationController
   end
 
   def show
+
     @task = Task.find(params[:id])
 
     @updates = Update.where(:task_id => @task.id)
+
   end
 
   def destroy
-      @task = Task.find(params[:id])
-      @task.destroy
- 
-      redirect_to tasks_path, :notice => "Task deleted!"
+
+    @task = Task.find(params[:id])
+    @task.destroy
+
+    redirect_to tasks_path, :notice => "Task deleted!"
+
   end
 
 
 	private
   	
-  	## Strong Parameters 
-	def task_params
-  	params.require(:task).permit(:id, :title, :body, :user_id, :manager_id)
-	end
+    ## Strong Parameters 
+  	def task_params
+
+    	params.require(:task).permit(:id, :title, :body, :user_id, :manager_id)
+      
+  	end
 end
