@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     	if @user.update(user_params)
       		redirect_to users_path, :notice => "Account Updated!"
     	else
-      		render 'edit'
+      		render "edit"
     	end
 
   	end
@@ -93,7 +93,7 @@ class UsersController < ApplicationController
 	  		unless current_user && current_user.access < 3
 	  			redirect_to root_path
 	  		end
-	  		
+
 	  	end
 
 end

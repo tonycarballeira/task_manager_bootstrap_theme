@@ -39,7 +39,7 @@ class TeamsController < ApplicationController
   	if @team.update(team_params)
     		redirect_to teams_path, :notice => "Account Updated!"
   	else
-    		render 'edit'
+    		render "edit"
   	end
 
 	end
@@ -57,6 +57,6 @@ class TeamsController < ApplicationController
   		unless current_user && current_user.access == 1
   			redirect_to root_path
   		end
-      
+
     end
 end

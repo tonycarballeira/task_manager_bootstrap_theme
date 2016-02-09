@@ -3,8 +3,8 @@
 
   <head>
     <title>TaskManager</title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -56,7 +56,7 @@
       <div class="container">
         
         <div class="row">
-          <div class="alert alert-info span4 offset4 " role="alert"><%= content_tag :div, msg, :id => "flash_#{name}" %></div>
+          <div class="alert alert-info span4 offset4" role="alert"><%= content_tag :div, msg, :id => "flash_#{name}" %></div>
         </div>	
   
       </div>    
