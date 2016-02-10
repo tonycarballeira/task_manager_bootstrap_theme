@@ -21,8 +21,8 @@ $(document).ready(function(){
 
 	// FUNCTION: Task Form dynamic select options for accounts
 	$('.team_select').change(function(){
+
 		var value = $('.team_select').val();
-		console.log("java")
 		
 		if(value){
 			
@@ -34,13 +34,16 @@ $(document).ready(function(){
 	      		dataType: "script"
 
     		});
+
 		}
 		
 	});
 
-	//  FUNCTION: Alert Box fade out
+	// FUNCTION: Alert Box fade out
 	setTimeout(function(){
+
     	$(".alert").fadeOut( "slow");
+    	
   	}, 2000);
 
 });
