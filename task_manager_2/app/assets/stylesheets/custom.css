@@ -1,0 +1,9 @@
+#page-wrapper {
+    padding-top: 5%;
+}
+
+@media(min-width:768px) {
+    #page-wrapper {
+       	padding-top: 5%;
+    }
+}

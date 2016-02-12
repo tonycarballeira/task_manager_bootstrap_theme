@@ -9,7 +9,20 @@ class PagesController < ApplicationController
 
     elsif current_user && current_user.access == 2
 
-      @users = User.where(:access => 3)
+      # USERS
+
+      @users = []
+
+      User.all.each do |acc|
+        if (acc.teams != []) && (acc.teams[0].id == current_user.teams[0].id) && (acc.access == 3)
+          @users << acc
+        end
+      end
+
+      puts @users
+
+      # ACCOUNTS
+
       @tasks = []
 
       Task.all.each do |x|
