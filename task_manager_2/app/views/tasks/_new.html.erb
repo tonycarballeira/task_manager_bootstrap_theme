@@ -1,0 +1,78 @@
+<div class="row-fluid">
+	<div class="col-md-4 well center">	
+		<%= form_for @task, :html => {:class => "form-horizontal"} do |f| %>
+			<% if @task.errors.any? %>
+				
+				<div class="alert alert-info" role="alert">
+					<span><%= @task.errors.full_messages[0] %></span>
+				</div>
+
+			<% end %>
+		
+			<fieldset>
+
+				<% if @task.persisted? %>
+					<legend>Edit Task</legend>
+				<% else%>
+					<legend>Create Task</legend>
+				<% end %>
+
+				<div class="control-group">	
+
+					<%= f.label :title %><br />
+
+					<div class="controls">
+						<%= f.text_field :title, :class => "form-control" %>
+					</div>
+
+				</div>
+
+				<div class="control-group">	
+
+					<%= f.label :body %><br />
+
+					<div class="controls">
+						<%= f.text_area :body, :class => "form-control" %>
+					</div>
+					
+				</div>
+
+				<% if current_user && current_user.access == 1 %>
+
+					<% teams = Team.all %>
+
+					<div class="control-group">
+
+						<label>Team</label><br />
+
+						<select class="team_select">
+
+							<option value=""></option>
+
+							<% teams.each do |x| %>
+								<option value="<%= x.id %>"><%= x.name%></option>
+							<% end %>
+
+						</select>
+
+					</div>
+					
+				<% end %>
+          	 	
+          	 	<div class="control-group">	
+					<%= f.label :user_id, "Staffer to assign task to." %><br />
+					<%= f.collection_select :user_id, @users, :id, :email, include_blank: true %>
+				</div>
+
+				<%= f.hidden_field :manager_id, :value => current_user.id %>
+
+				<div class="form-actions sub">
+					<%= f.submit :class => "btn btn-primary" %>
+				</div>
+
+			</fieldset>
+			
+		<% end %>
+
+	</div>
+</div>

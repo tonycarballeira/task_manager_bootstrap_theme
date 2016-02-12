@@ -1,0 +1,77 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+// Alert div positioning  !!
+
+.alert {
+	position: absolute;
+	z-index: 1;
+	left: 35%;
+	right: 35%;
+	width: 30%;
+	margin-bottom: 0;
+}
+
+
+//  page content padding from top header  !!
+
+
+
+
+// Form div positioning  !!
+
+.center { 
+	float: none; 
+	margin-left: auto; 
+	margin-right: auto; 
+	margin-top: 5%;
+}
+
+
+// Form fields bottom margin  !!
+
+.control-group {
+	margin-bottom: 5px;
+}
+
+
+// Font Awesome icon right margins  !!
+
+.fa {
+	margin-right: 10px;
+}
+
+
+// Nav bar dropdown user email positioning
+
+.navbar-text {
+	margin-left: 15px;
+}
+
+
+// form submit button top margin  !!
+
+.sub {
+	margin-top: 20px;
+}
+
+
+@media (min-width: 992px) {
+	.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+	    float: none !important;
+	}
+}
