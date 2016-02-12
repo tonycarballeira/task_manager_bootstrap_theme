@@ -1,39 +1,40 @@
-<%= stylesheet_link_tag    "custom", media: "all" %>
+<%= stylesheet_link_tag    "login", media: "all" %>
+<div class='poon'>
+	<div class="row-fluid">
+		<div class="col-md-4 well center">
 
-<div class="row-fluid">
-	<div class="col-md-4 well center">
+			<!-- form_tag instead of form for because there is no specific resource we are creating -->
 
-		<!-- form_tag instead of form for because there is no specific resource we are creating -->
+			<%= form_tag sessions_path, :html => {:class => "form-horizontal"} do %>
 
-		<%= form_tag sessions_path, :html => {:class => "form-horizontal"} do %>
+				<legend>Log In</legend>
 
-			<legend>Log In</legend>
+				<div class="control-group">	
 
-			<div class="control-group">	
+					<%= label_tag :email %><br />
 
-				<%= label_tag :email %><br />
+					<div class="controls">
+						<%= text_field_tag :email, params[:email], :class => "form-control" %>
+					</div>
 
-				<div class="controls">
-					<%= text_field_tag :email, params[:email], :class => "form-control" %>
 				</div>
 
-			</div>
+				<div class="control-group">	
 
-			<div class="control-group">	
+			    	<%= label_tag :password %><br />
 
-		    	<%= label_tag :password %><br />
+			    	<div class="controls">
+			    		<%= password_field_tag :password, params[:password], :class => "form-control" %>
+		    		</div>
 
-		    	<div class="controls">
-		    		<%= password_field_tag :password, params[:password], :class => "form-control" %>
-	    		</div>
+			  	</div>
+			  	
+			  	<div class="form-actions sub">
+			  		<%= submit_tag "Log in", :class => "btn btn-primary" %>
+		  		</div>
+			  
+			<% end %>
 
-		  	</div>
-		  	
-		  	<div class="form-actions sub">
-		  		<%= submit_tag "Log in", :class => "btn btn-primary" %>
-	  		</div>
-		  
-		<% end %>
-
+		</div>
 	</div>
 </div>
