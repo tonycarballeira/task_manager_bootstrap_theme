@@ -1,64 +1,71 @@
 <div class="container">
 
-<h2>Tasks</h2>
+	<div class="row">
 
-<p><%= link_to "Assign New Task", new_task_path %></p>
+	    <div class="col-lg-12">
+	        <h1 class="page-header">Tasks</h1>
+	    </div>
+	    
+	</div>
 
-<table class="table table-hover">
-	<thead>
-		<tr>
-			<th>#</th>
-	        <th>Title</th>
-	        <th>Staffer</th>
-	        <th>Manager</th>
-	        <th></th>
-	        <th></th>
-	        <th></th>
-		</tr>
-	</thead>
+	<p><%= link_to "Assign New Task", new_task_path %></p>
 
-	<% i=0 %>
-	<tbody>
-
-		<% @tasks.each do |task| %>
-		
-			<% i = i + 1 %>
-			<% staffer = User.find(task.user_id) %>
-			<% manager = User.find(task.manager_id) %>
-
+	<table class="table table-hover">
+		<thead>
 			<tr>
-				
-				<td>
-					<%= "#{i}" %>
-				</td>
-
-	        	<td>
-	        		<%= task.title %>
-	        	</td>
-
-	        	<td>
-	        		<%= staffer.email %>
-				</td>
-
-				<td>
-	        		<%= manager.email %>
-				</td>
-
-				<td>
-					<%= link_to "View", task_path(task) %>
-				</td>
-
-				<td>
-					<%= link_to "Edit", edit_task_path(task) %>
-				</td>
-
-				<td>
-					<%= link_to "Destroy", task_path(task), method: :delete, data: { confirm: "Are you sure?" } %>
-				</td>
-
+				<th>#</th>
+		        <th>Title</th>
+		        <th>Staffer</th>
+		        <th>Manager</th>
+		        <th></th>
+		        <th></th>
+		        <th></th>
 			</tr>
+		</thead>
 
-		<% end %>
+		<% i=0 %>
+		<tbody>
 
-	</tbody>
-</table>
+			<% @tasks.each do |task| %>
+			
+				<% i = i + 1 %>
+				<% staffer = User.find(task.user_id) %>
+				<% manager = User.find(task.manager_id) %>
+
+				<tr>
+					
+					<td>
+						<%= "#{i}" %>
+					</td>
+
+		        	<td>
+		        		<%= task.title %>
+		        	</td>
+
+		        	<td>
+		        		<%= staffer.email %>
+					</td>
+
+					<td>
+		        		<%= manager.email %>
+					</td>
+
+					<td>
+						<%= link_to "View", task_path(task) %>
+					</td>
+
+					<td>
+						<%= link_to "Edit", edit_task_path(task) %>
+					</td>
+
+					<td>
+						<%= link_to "Destroy", task_path(task), method: :delete, data: { confirm: "Are you sure?" } %>
+					</td>
+
+				</tr>
+
+			<% end %>
+
+		</tbody>
+	</table>
+</div>
