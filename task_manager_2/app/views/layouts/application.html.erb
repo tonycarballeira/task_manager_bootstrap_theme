@@ -25,46 +25,46 @@
               <%= link_to "Task Manager", root_path, class:"navbar-brand" %>
           </div>
           <!-- /.navbar-header -->
-
-          <ul class="nav navbar-top-links navbar-right">
-              
-              <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                      <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                  </a>
-                  <ul class="dropdown-menu dropdown-user">
-                      <% if current_user %>
-                        <li>
-                          <%= link_to root_path do %>
-
-                            <i class="fa fa-user fa-fw"></i><%= current_user.email %>
-
-                          <% end %>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                          <%= link_to log_out_path do %>
-
-                            <i class="fa fa-sign-out fa-fw"></i>Logout
-
-                          <% end %>
-                        </li>
-                      <% else %>
-                        <li>
-                          <%= link_to log_in_path do %>
-
-                            <i class="fa fa-sign-out fa-fw"></i>Login
-
-                          <% end %>
-                        </li>
-                      <% end %>
-                  </ul>
-                  <!-- /.dropdown-user -->
-              </li>
-              <!-- /.dropdown -->
-          </ul>
-          <!-- /.navbar-top-links -->
           <% if current_user %>
+            <ul class="nav navbar-top-links navbar-right">
+                
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <% if current_user %>
+                          <li>
+                            <%= link_to root_path do %>
+
+                              <i class="fa fa-user fa-fw"></i><%= current_user.email %>
+
+                            <% end %>
+                          </li>
+                          <li class="divider"></li>
+                          <li>
+                            <%= link_to log_out_path do %>
+
+                              <i class="fa fa-sign-out fa-fw"></i>Logout
+
+                            <% end %>
+                          </li>
+                        <% else %>
+                          <li>
+                            <%= link_to log_in_path do %>
+
+                              <i class="fa fa-sign-out fa-fw"></i>Login
+
+                            <% end %>
+                          </li>
+                        <% end %>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+          <!-- /.navbar-top-links -->
+          
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
@@ -151,6 +151,18 @@
     <% else %>
 
       <%= stylesheet_link_tag    "custom", media: "all" %>
+
+      <% flash.each do |name, msg| %>
+
+          <div class="container">
+            <div class="row">
+              <div class="alert alert-info span4 offset4" role="alert">
+                <%= content_tag :div, msg, :id => "flash_#{name}" %>
+              </div>
+            </div>  
+          </div>    
+      
+        <% end %>
 
       <%= yield  %>
 

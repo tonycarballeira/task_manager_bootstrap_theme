@@ -5,4 +5,12 @@
 
 }
 
-
+.alert {
+	position: absolute;
+	z-index: 1;
+	left: 35%;
+	right: 35%;
+	width: 30%;
+	margin-bottom: 0;
+	top: 8%;
+}
