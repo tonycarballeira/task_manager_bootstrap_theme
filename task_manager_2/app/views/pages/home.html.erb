@@ -2,28 +2,93 @@
 
 	<% if current_user.access == 1 %>
 
-		<div class="container well center">
-
-			<legend>Super Manager Dash</legend>
-
-			<div class='row'>
-				<div class="col-md-4"><i class="fa fa-user fa-lg"></i><%= link_to "Accounts", users_path %></div>
-				<div class="col-md-4"><i class="fa fa-tasks fa-lg"></i><%= link_to "Tasks", tasks_path %></div>
-				<div class="col-md-4"><i class="fa fa-users fa-lg"></i><%= link_to "Teams", teams_path %></div>				
-			</div>
-		</div>
+		<div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Dashboard</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-user fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><%= User.all.count %></div>
+                                    <div>Accounts!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-tasks fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><%= Task.all.count %></div>
+                                    <div>Tasks!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-shopping-cart fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">124</div>
+                                    <div>New Orders!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
 
 	<% elsif current_user.access == 2 %>
 
-		<div class="container well center">
+		<div class="center">
 
-			<legend>Manager Dash</legend>
+			<legend>Manager</legend>
 
-			<div class="row">
-				<div class="col-md-4"><i class="fa fa-user fa-lg"></i><%= link_to "Accounts", users_path %></div>
-				<div class="col-md-4"><i class="fa fa-tasks fa-lg"></i><%= link_to "Tasks", tasks_path %></div>
+			<div class='row'>
+							
 			</div>
-		</div>		
+		</div>	
 
 	<% else %>
 
