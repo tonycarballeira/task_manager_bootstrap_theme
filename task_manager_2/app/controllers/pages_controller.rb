@@ -2,12 +2,12 @@ class PagesController < ApplicationController
 
   def home
 
-  	if current_user.access == 1
+  	if current_user && current_user.access == 1
 
       @tasks = Task.all
       @users = User.all
 
-    elsif current_user.access == 2
+    elsif current_user && current_user.access == 2
 
       @users = User.where(:access => 3)
       @tasks = []
@@ -22,13 +22,18 @@ class PagesController < ApplicationController
 
     else
 
-      @tasks = Task.where(:user_id => current_user.id)
+      if current_user
+
+        @tasks = Task.where(:user_id => current_user.id)
+
+      end
       
     end
   	
   end
 
-  def test
+  def index
+    @tasks = Task.where(:user_id => current_user.id)
   end
 
 end
