@@ -9,8 +9,11 @@ class TasksController < ApplicationController
       team = current_user.teams[0]
       
       @users = team.users.where(:access => 3).where(:active => true)
+
     else
+
       @users = User.where(:active => true)
+      
     end  
 
 	end
@@ -46,6 +49,18 @@ class TasksController < ApplicationController
 	def edit
 
     	@task = Task.find(params[:id])
+
+      if current_user.teams != []
+
+        team = current_user.teams[0]
+        
+        @users = team.users.where(:access => 3).where(:active => true)
+
+      else
+
+        @users = User.where(:active => true)
+
+      end  
 
 	end
 
