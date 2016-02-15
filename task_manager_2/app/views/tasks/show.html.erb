@@ -16,60 +16,63 @@
 
 <% i=0 %>
 
-<div class="container">
+
 	
-	<h3>Updates</h3>
+		<h3>Updates</h3>
 
-	<% if current_user.access == 3 %>
-	
-		<%= link_to "Add new Update", new_update_path(task_id: @task.id) %>
+		<% if current_user.access == 3 %>
+		
+			<%= link_to "Add new Update", new_update_path(task_id: @task.id) %>
 
-	<% end %>
+		<% end %>
 
-	<table class="table table-hover">
+		<table class="table table-hover">
 
-		<thead>
-			<tr>
-				<th>#</th>
-		        <th>Title</th>
-		        <th>Body</th>
-		        <th>Staffer</th>
-		        <th>Update Time</th>
-			</tr>
-		</thead>
-
-		<tbody>
-
-			<% @updates.each do |x| %>
-			
-				<% i = i + 1 %>
-
+			<thead>
 				<tr>
-					
-					<td>
-						<%= "#{i} - " %>
-					</td>
-
-		        	<td>
-		        		<%= x.title %>
-		        	</td>
-
-		        	<td>
-		        		<%= x.body %>
-					</td>
-
-					<td>
-		        		<%= User.where(:id => x.user_id)[0].email %>
-					</td>
-
-					<td>
-		        		<%= x.created_at.strftime("%m/%d/%Y %I:%M %p") %>
-					</td>
+					<th>#</th>
+			        <th>Title</th>
+			        <th>Body</th>
+			        <th>Staffer</th>
+			        <th>Update Time</th>
 				</tr>
+			</thead>
 
-			<% end %>
-		</tbody>
+			<tbody>
 
-	</table>
+				<% @updates.each do |x| %>
+				
+					<% i = i + 1 %>
+
+					<tr>
+						
+						<td>
+							<%= "#{i} - " %>
+						</td>
+
+			        	<td>
+			        		<%= x.title %>
+			        	</td>
+
+			        	<td>
+			        		<%= x.body %>
+						</td>
+
+						<td>
+			        		<%= User.where(:id => x.user_id)[0].email %>
+						</td>
+
+						<td>
+			        		<%= x.created_at.strftime("%m/%d/%Y %I:%M %p") %>
+						</td>
+					</tr>
+
+				<% end %>
+			</tbody>
+
+		</table>
+
+
+
 	
 
