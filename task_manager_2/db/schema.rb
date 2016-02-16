@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160202202953) do
+ActiveRecord::Schema.define(version: 20160216205457) do
 
   create_table "memberships", force: :cascade do |t|
     t.integer  "user_id"
@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 20160202202953) do
     t.datetime "updated_at",    null: false
     t.boolean  "active"
     t.integer  "access"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
 end
