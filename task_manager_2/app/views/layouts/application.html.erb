@@ -2,6 +2,7 @@
 <html>
 
   <head>
+    
     <title>TaskManager</title>
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
@@ -26,6 +27,7 @@
           </div>
           <!-- /.navbar-header -->
           <% if current_user %>
+          
             <ul class="nav navbar-top-links navbar-right">
                 
                 <li class="dropdown">
@@ -110,7 +112,7 @@
                         </li>
 
                       <% else %>
-                        <% if current_user && current_user.access == 3%>
+                        <% if current_user && current_user.access == 3 %>
                           <li>
                             <%= link_to staffer_tasks_path do %>
                               <i class="fa fa-tasks fa-fw"></i> Tasks
@@ -166,10 +168,7 @@
 
       <%= yield  %>
 
-    <% end %>
-
-
-  	
+    <% end %>	
     
   </body>
 
